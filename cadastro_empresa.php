@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Criar conta</title>
+    <title>Cadastro empresa</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/masks.js"></script>
@@ -24,7 +24,7 @@
         </header>
         <div class="row">
             <div class="text-center">
-                <h4>Criar conta</h4>
+                <h4>Cadastro empresa</h4>
             </div>
             <form method="POST" class="needs-validation">
                 <div class="mb-3">
@@ -33,23 +33,13 @@
                     
                 </div>
                 <div class="mb-3">
-                    <label for="sexo">Sexo</label>
-                    <select class="form-select" id="sexo">
-                        <option value="f">Feminino</option>
-                        <option value="m">Masculino</option>
-                    </select>        
+                    <label for="Endereço" class="form-label">Endereço</label>
+                    <input type="text" class="form-control" id="Endereço" >                    
                 </div>
+                
                 <div class="mb-3">
-                    <label for="nascimento">Data de nascimento</label>
-                    <input type="date" class="form-control" id="nascimento" >
-                </div>
-                <div class="mb-3">
-                    <label for="telefone">Telefone</label>
-                    <input type="text" class="form-control" id="telefone" placeholder="(XX) XXXXX-XXXX">
-                </div>
-                <div class="mb-3">
-                    <label for="cpf">CPF</label>
-                    <input type="text" class="form-control" id="cpf" placeholder="000.000.000-00">
+                    <label for="cnpj">CNPJ</label>
+                    <input type="text" class="form-control" id="cnpj" placeholder="00.000.000/0000-00">
                 </div>
                 <div class="mb-3">
                     <label for="email">Email</label>
@@ -63,8 +53,8 @@
                     <button class="btn btn-light btn-lg btn-block" type="submit">Criar</button>
                 </div>
             </form>
-            <div class="text-danger"> <!-- Essa classe só ta para destacar o texto enquanto n arrumamos o botão-->
-                <a href="login.html" class="text-danger text-decoration-none">Já tem uma conta?</a>
+            <div class="text-warning"> 
+                <a href="login.php" class="text-warning text-decoration-none">Já tem uma conta?</a>
                 <div id="contas"></div>
             </div>
         </div>
