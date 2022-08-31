@@ -28,36 +28,52 @@
                
                 <div class="mb-3">
                     <label for="area_atuacao" class="form-label">Área de atuação</label>
-                    <textarea class="form-control" id="area_atuacao" rows="6" placeholder="Dados do currículo" id="area_atuacao"></textarea>
+                    <textarea class="form-control" id="area_atuacao" rows="6" placeholder="Dados do currículo" name="area_atuacao"></textarea>
                 </div>
-
-                <div class="mb-3">
-                    <label for="formacao_academica" class="form-label">Formação acadêmica</label>
-                    <textarea class="form-control" id="formacao_academica" rows="6" placeholder="Dados do currículo" id="formacao_academica"></textarea>
-                </div>
-
                 <div class="mb-3">
                     <label for="experiencia" class="form-label">Experiência</label>
-                    <textarea class="form-control" id="experiencia" rows="6" placeholder="Dados do currículo" itemid="experiencia"></textarea>
+                    <textarea class="form-control" id="experiencia" rows="6" placeholder="Dados do currículo" name="experiencia"></textarea>
                 </div>
 
                 <div class="col">
                     <label form="endereco" class="form-label">Endereço</label>
-                    <input class="form-control" type="text" value="Dados do currículo" id="endereco">
+                    <input class="form-control" type="text" value="Dados do currículo" name="endereco">
                 </div>
                    <br>
                    
                 <div class="row">   
                     <div class="d-grid gap-2 col-3 mx-auto">
-                        <button class="btn btn-light btn-lg btn-block" type="submit">Criar</button>
+                        <button class="btn btn-light btn-lg btn-block" type="submit" name="cria">Criar</button>
                     </div>
                     <div class="d-grid gap-2 col-3 mx-auto">
-                        <button class="btn btn-light btn-lg btn-block" type="submit">Cancelar</button>
+                        <button class="btn btn-light btn-lg btn-block" type="submit" name="cancela">Cancelar</button>
                     </div>
                     
                 </div>
             </form>
         </div>
     </div>
+
+    <?php
+    $conn = mysqli_connect("localhost", "root", "", "empregue_se");
+        if(isset($_POST["cria"])){
+            $area = $_POST["area_atuacao"];
+            $experiencia = $_POST["experiencia"];
+            $endereco =$_POST["endereco"];
+            $id_email = $_GET['id_email'];
+            if($conn){
+                $sql = "UPDATE cliente SET areaDeAtuacao = '$area', experiencia = '$experiencia', endereco='$endereco' WHERE email = '$id_email'";
+                if (mysqli_query($conn, $sql)){
+                    echo ("
+                    <script>
+                    alert('Curruculo criado com sucesso');
+                    location.href = 'login.php';
+                    </script>");
+                }
+            }
+        
+        }
+        mysqli_close($conn);
+    ?>
 </body>
 </html>

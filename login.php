@@ -82,7 +82,7 @@
                                 if($registro['email'] == $email){
                                     $email_valido = true;
                                     if($registro['senha'] == $senha){
-                                        header("location: criar_curriculo.php");
+                                            header("location: criar_curriculo.php?id_email=$registro[email]");
                                     } else{
                                         echo("Senha incorreta");
                                     }
