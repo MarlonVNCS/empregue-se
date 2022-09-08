@@ -2,8 +2,8 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Tempo de geração: 31-Ago-2022 às 16:22
+-- Host: 127.0.0.1
+-- Tempo de geração: 08-Set-2022 às 18:31
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.1.2
 
@@ -57,23 +57,22 @@ CREATE TABLE `cliente` (
   `cpf` varchar(45) NOT NULL,
   `nascimento` date NOT NULL,
   `telefone` varchar(45) NOT NULL,
-  `endereco` varchar(45) NOT NULL DEFAULT '',
-  `sexo` varchar(50) NOT NULL,
+  `endereco` varchar(45) NOT NULL,
   `email` varchar(45) NOT NULL,
   `senha` varchar(45) NOT NULL,
-  `areaDeAtuacao` varchar(100) DEFAULT NULL,
-  `experiencia` varchar(1000) DEFAULT NULL,
-  `id_formacaoAcademica` int(11) NOT NULL
+  `areaDeAtuacao` varchar(100) NOT NULL,
+  `experiencia` varchar(1000) NOT NULL,
+  `id_formacaoAcademica` int(11) NOT NULL,
+  `sexo` varchar(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `cliente`
 --
 
-INSERT INTO `cliente` (`id`, `nome`, `cpf`, `nascimento`, `telefone`, `endereco`, `sexo`, `email`, `senha`, `areaDeAtuacao`, `experiencia`, `id_formacaoAcademica`) VALUES
-(3, 'cliente', '940.746.560-86', '2012-08-01', '(51) 999999999', 'AAAAAAAAAABBBB', '', 'cliente@teste.com', 'teste123', 'AAAAAAAAAAA', 'AAAAAAAAVVVVV', 1),
-(4, 'lucas', '(51) 999999999', '2022-08-02', 'telefone', '', 'm', 'email', '123456', NULL, NULL, 1),
-(5, 'lucas', '999.999.999-99', '2022-08-11', '(00) 00000-0000', '', 'm', 'lucas@gmail.com', '123456', NULL, NULL, 1);
+INSERT INTO `cliente` (`id`, `nome`, `cpf`, `nascimento`, `telefone`, `endereco`, `email`, `senha`, `areaDeAtuacao`, `experiencia`, `id_formacaoAcademica`, `sexo`) VALUES
+(3, 'cliente', '940.746.560-86', '2012-08-01', '(51) 999999999', 'Rolante', 'cliente@teste.com', 'teste123', 'a', 'a', 1, ''),
+(4, 'Sla da Silva', '151.518.181-81', '2022-09-01', '(51) 99999-9999', '', 'sla@gmail.com', '123', '', '', 1, 'm');
 
 -- --------------------------------------------------------
 
@@ -97,7 +96,7 @@ CREATE TABLE `empresa` (
 INSERT INTO `empresa` (`id`, `nome`, `endereco`, `cnpj`, `email`, `senha`) VALUES
 (1, 'Admin', 'Rolante', '97.049.381/0001-35', 'admin_test001@adm.com', 'senha123'),
 (2, 'AdminDois', 'Rolante', '97.049.381/0001-35', 'admin_test2@adm.com', '12345'),
-(4, 'aspumi', '', '0000000000', 'aspumi@gmail.com', '123456');
+(4, 'Ambev', '', '99.999.999/9999-99', 'ambev@gmail.com', '123');
 
 -- --------------------------------------------------------
 
@@ -186,7 +185,7 @@ ALTER TABLE `vaga`
 -- AUTO_INCREMENT de tabela `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `empresa`
