@@ -1,25 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vaga</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    
-
-</head>
-<body class="bg-dark text-light">
-    <div class="container" style="max-width: 26.5rem;">
-        <header class="py-5 text-center">
-            <div>
-                <a href="https://github.com/MarlonVNCS/empregue-se">
-                    <img class="d-block mx-auto mb-4" src="https://bulma.io/images/placeholders/128x128.png" alt="" width="110" height="110">
-                </a> 
-            </div>
-            <h2>Empregue-se</h2>
-
-        </header>
+<?php require_once("menu.php")?>
         <div class="row">
             <div class="text-center">
                 <h4>Vaga</h4>

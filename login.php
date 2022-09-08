@@ -1,26 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="js/criar_contas.js"></script>
-
-</head>
-<body class="bg-dark text-light">
-    <div class="container" style="max-width: 26.5rem;">
-        <header class="py-5 text-center">
-            <div>
-                <a href="login.html">
-                    <img class="d-block mx-auto mb-4" src="https://bulma.io/images/placeholders/128x128.png" alt="" width="110" height="110">
-                </a> 
-            </div>
-            <h2>Empregue-se</h2>
-            <p class="lead">Encontre o emprego que você tanto quer!</p>
-        </header>
+<?php require_once("menu.php")?>
         <div class="row">
             <div class="text-center">
                 <h4>Fazer login</h4>
@@ -57,7 +35,7 @@
                     $conn = mysqli_connect("127.0.0.1","root","","empregue_se");
 
                     if($conn){
-                        $sql = "SELECT email, senha FROM empresa";
+                        $sql = "SELECT id, email, senha FROM empresa";
                         $registros = mysqli_query($conn, $sql);
 
                         if (mysqli_num_rows($registros) > 0){
@@ -65,6 +43,8 @@
                                 if($registro['email'] == $email){
                                     $email_valido = true;
                                     if($registro['senha'] == $senha){
+                                        setcookie("login", $registro["id"]);
+                                        setcookie("tipo", "empresa");
                                         header("location: criar_vaga.php");
                                     } else{
                                         echo("Senha incorreta");
@@ -74,15 +54,17 @@
                             
                         }
                         
-                        $sql = "SELECT email, senha FROM cliente";
+                        $sql = "SELECT id, email, senha FROM cliente";
                         $registros = mysqli_query($conn, $sql);
-
+                        
                         if (mysqli_num_rows($registros) > 0){
                             while ($registro = mysqli_fetch_array($registros) ){
                                 if($registro['email'] == $email){
                                     $email_valido = true;
                                     if($registro['senha'] == $senha){
-                                            header("location: criar_curriculo.php?id_email=$registro[email]");
+                                        setcookie("login", $registro["id"]);
+                                        setcookie("tipo", "cliente");
+                                        header("location: index.php");
                                     } else{
                                         echo("Senha incorreta");
                                     }
