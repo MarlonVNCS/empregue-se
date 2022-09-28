@@ -9,23 +9,23 @@ require_once("barra.php");
                 <label >Escolaridade</label>
                 <label class="list-group-item d-flex gap-2">
                 <input class="form-check-input flex-shrink-0" type="checkbox" value="" checked="">
-                <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                <span><label style="vertical-align: inherit;"><label style="vertical-align: inherit;">
                 Ensino fundamental
-                    </font></font><small class="d-block text-muted"><font style="vertical-align: inherit;"></font></small>
+                    </label></label><small class="d-block text-muted"><label style="vertical-align: inherit;"></label></small>
                 </span>
                 </label>
                 <label class="list-group-item d-flex gap-2">
                 <input class="form-check-input flex-shrink-0" type="checkbox" value="">
-                <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                <span><label style="vertical-align: inherit;"><label style="vertical-align: inherit;">
                     Ensino médio
-                    </font></font><small class="d-block text-muted"><font style="vertical-align: inherit;"></font></small>
+                    </label></label><small class="d-block text-muted"><label style="vertical-align: inherit;"></label></small>
                 </span>
                 </label>
                 <label class="list-group-item d-flex gap-2">
                 <input class="form-check-input flex-shrink-0" type="checkbox" value="">
-                <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                <span><label style="vertical-align: inherit;"><label style="vertical-align: inherit;">
                 Ensino superior
-                    </font></font><small class="d-block text-muted"><font style="vertical-align: inherit;"></font></small>
+                    </label></label><small class="d-block text-muted"><label style="vertical-align: inherit;"></label></small>
                 </span>
                 </label>
 
@@ -33,23 +33,23 @@ require_once("barra.php");
                 <label >Cidade</label>
                     <label class="list-group-item d-flex gap-2">
                     <input class="form-check-input flex-shrink-0" type="checkbox" value="" checked="">
-                    <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                    <span><label style="vertical-align: inherit;"><label style="vertical-align: inherit;">
                         id cidade
-                        </font></font><small class="d-block text-muted"><font style="vertical-align: inherit;"></font></small>
+                        </label></label><small class="d-block text-muted"><label style="vertical-align: inherit;"></label></small>
                     </span>
                     </label>
                     <label class="list-group-item d-flex gap-2">
                     <input class="form-check-input flex-shrink-0" type="checkbox" value="">
-                    <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                    <span><label style="vertical-align: inherit;"><label style="vertical-align: inherit;">
                         id cidade
-                        </font></font><small class="d-block text-muted"><font style="vertical-align: inherit;"></font></small>
+                        </label></label><small class="d-block text-muted"><label style="vertical-align: inherit;"></label></small>
                     </span>
                     </label>
                     <label class="list-group-item d-flex gap-2">
                     <input class="form-check-input flex-shrink-0" type="checkbox" value="">
-                    <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                    <span><label style="vertical-align: inherit;"><label style="vertical-align: inherit;">
                         id cidade
-                        </font></font><small class="d-block text-muted"><font style="vertical-align: inherit;"></font></small>
+                        </label></label><small class="d-block text-muted"><label style="vertical-align: inherit;"></label></small>
                     </span>
                     </label>
             </div>
@@ -58,7 +58,7 @@ require_once("barra.php");
                 <?php 
                 // primeiro é preciso buscar as informacoes do registro a ser editado
                 //$id_vaga = $_GET['id_vaga'];
-                $id_vaga=2;
+                $id_vaga=1;
 
                 
                         $conn = mysqli_connect("127.0.0.1", "root", "", "empregue_se"); // abre a conexão com o banco de dados
