@@ -1,4 +1,4 @@
-<?php require_once("menu.php")?>
+<?php require_once("menu_login.php")?>
         <div class="row">
             <div class="text-center">
                 <h4>Cadastro empresa</h4>
@@ -31,7 +31,7 @@
                 </div>
             </form>
             <div class="text-warning"> 
-                <a href="login.php" class="text-warning text-decoration-none">Já tem uma conta?</a>
+                <a href="login.php" style="font-size:110%;" class="text-warning text-decoration-none">Voltar</a>
                 <div id="contas"></div>
             </div>
         </div>

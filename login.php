@@ -1,4 +1,4 @@
-<?php require_once("menu.php")?>
+<?php require_once("menu_login.php")?>
         <div class="row">
             <div class="text-center">
                 <h4>Fazer login</h4>
@@ -45,7 +45,7 @@
                                     if($registro['senha'] == $senha){
                                         setcookie("login", $registro["id"]);
                                         setcookie("tipo", "empresa");
-                                        header("location: criar_vaga.php");
+                                        header("location: empresa.php");
                                     } else{
                                         echo("Senha incorreta");
                                     }
@@ -64,7 +64,7 @@
                                     if($registro['senha'] == $senha){
                                         setcookie("login", $registro["id"]);
                                         setcookie("tipo", "cliente");
-                                        header("location: index.php");
+                                        header("location: cliente.php");
                                     } else{
                                         echo("Senha incorreta");
                                     }

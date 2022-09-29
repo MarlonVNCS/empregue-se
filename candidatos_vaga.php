@@ -1,5 +1,6 @@
 <?php  
-require_once("barra.php");
+require_once("validar.php");
+require_once("menu_principal.php");
 ?>
     
     <div class="container" style="max-width: 50.5rem;">
