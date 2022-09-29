@@ -16,40 +16,37 @@
 </head>
 <body class="bg-dark text-light">
     <header class="text-center">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="index.php">Empregue-se</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav justify-contend-end">
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="index.php">Inicio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Conta</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="logout.php">Sair</a>
-                        </li>
-                    </ul>
-                    <div class="d-flex me-2">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="index.php">Insta</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Twitter</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="logout.php">IFRS</a>
-                            </li>
-                        </ul>
-                    </div>
-                    
-                </div>
-            </div>
-        </nav>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.php">Empregue-se</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarScroll">
+      <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="index.php">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Conta</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Contatos
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+            <li><a class="dropdown-item" href="https://ifrs.edu.br/rolante/">IFRS Campus Rolante</a></li>
+            <li><a class="dropdown-item" href="https://linktr.ee/empregue">Redes sociais</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="https://github.com/MarlonVNCS/empregue-se">Github</a></li>
+          </ul>
+        </li>
+      </ul>
+        <div class="d-flex">
+            <li><a class="me-2 text-decoration-none text-danger" href="logout.php">Sair</a></li>
+        </div>
+    </div>
+  </div>
+</nav>
     </header>
     <div class="container" style="max-width: 26.5rem;">
