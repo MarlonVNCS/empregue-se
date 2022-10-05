@@ -49,4 +49,3 @@
   </div>
 </nav>
     </header>
-    <div class="container" style="max-width: 26.5rem;">
