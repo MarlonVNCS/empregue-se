@@ -31,85 +31,64 @@ require_once("menu_principal.php");
 
                 <li><hr class="dropdown-divider"></li>
                 <label >Cidade</label>
-                    <label class="list-group-item d-flex gap-2">
-                    <input class="form-check-input flex-shrink-0" type="checkbox" value="" checked="">
-                    <span><label style="vertical-align: inherit;"><label style="vertical-align: inherit;">
-                        id cidade
-                        </label></label><small class="d-block text-muted"><label style="vertical-align: inherit;"></label></small>
-                    </span>
-                    </label>
-                    <label class="list-group-item d-flex gap-2">
-                    <input class="form-check-input flex-shrink-0" type="checkbox" value="">
-                    <span><label style="vertical-align: inherit;"><label style="vertical-align: inherit;">
-                        id cidade
-                        </label></label><small class="d-block text-muted"><label style="vertical-align: inherit;"></label></small>
-                    </span>
-                    </label>
-                    <label class="list-group-item d-flex gap-2">
-                    <input class="form-check-input flex-shrink-0" type="checkbox" value="">
-                    <span><label style="vertical-align: inherit;"><label style="vertical-align: inherit;">
-                        id cidade
-                        </label></label><small class="d-block text-muted"><label style="vertical-align: inherit;"></label></small>
-                    </span>
-                    </label>
+                        <?php  
+                            // abre a conexao com o banco de dados
+                            $conn = mysqli_connect("localhost", "root", "", "empregue_se");
+
+                            if ($conn){
+                            $sql = "SELECT * FROM cidade ORDER BY nome ASC";
+                            $registros = mysqli_query($conn, $sql);
+
+                                if(mysqli_num_rows($registros) >0 ){
+                                    
+
+                                    while ($registro =  mysqli_fetch_array($registros)) {
+                                        echo("
+                                        <label class='list-group-item d-flex gap-2'>
+                                        <input class='form-check-input flex-shrink-0' type='checkbox' value='' name ='box'>
+                                        <option value='$registro[id]'>$registro[nome]</option>
+                                        </label>
+                                        ");
+                                        
+                                    }
+                                }
+                            }
+                        ?>
+
+                    
+                </label>
             </div>
 
             <div class="dropdown-menu position-static d-grid gap-1 p-2 rounded-3 mx-0 shadow w-220px">
                 <?php 
-                // primeiro é preciso buscar as informacoes do registro a ser editado
-                //$id_vaga = $_GET['id_vaga'];
-                $id_vaga=1;
-
-                
-                        $conn = mysqli_connect("127.0.0.1", "root", "", "empregue_se"); // abre a conexão com o banco de dados
+                    $conn = mysqli_connect("127.0.0.1", "root", "", "empregue_se"); // abre a conexão com o banco de dados
                         
-                        if ($conn == false){
-                            die("Houve um erro ao conectar com o banco de dados");
+                    if ($conn == false){
+                        die("Houve um erro ao conectar com o banco de dados");
                             
-                        }
-
-
-                    if ($conn) {
-                        $sql = "SELECT * FROM vaga WHERE id = $id_vaga";
-
-                        $resultado = mysqli_query($conn, $sql);
-
-                        // a edicao vai retornar apenas uma linha, pois a busca é pela primary key da tabela
-                        if (mysqli_num_rows($resultado) == 1) {
-
-                            // pega os dados relativo a linha que retornou e armazenada na variável abaixo
-                            $vaga = mysqli_fetch_array($resultado);
-
-                            // pegando o valor dos campos e salvando em variaveis para preencher o formulário
-                            $nome 	= $vaga["nome"];
-                            $quantidade= $vaga["quantidade"];
-                            $status=$vaga["status"];
+                    }
+                    else{
+                        if($conn) {
+                            $sql = "SELECT * FROM vaga ORDER BY nome ASC";
+                            $resultado = mysqli_query($conn, $sql);
                             
-
-                        } else {
-                            echo ("Contato não encontrado");
+                            while ($vaga =  mysqli_fetch_array($resultado)) {
+                                $id = $vaga["id"];
+                                
+                                $nome = $vaga["nome"];
+                                $quantidade = $vaga["quantidade"];
+                                $status = $vaga["status"];
+                                $disponiveis=$quantidade-$status;
+                                
+                                echo("<a href='ver_vaga.php?id_vaga=$vaga[id]' class='btn btn-primary my-2'>
+                                 Vaga: $nome // Vagas disponiveis: $disponiveis </a>");
+                                
+                                
+                            }
                         }
-                    } else {
-                        die("Falha na conexão " . mysqli_connect_error() );
                     }
                 ?>
-                
-            
-                <p>
-                    
-                    <a href="#" class="btn btn-primary my-2">
-                        <?php 
-                        $disponiveis=$quantidade-$status;
-                    
-                        echo ("$nome");echo (" Vagas disponiveis: $disponiveis");
-
-                        
-                        ?>
-                    
-                    </a>
-                
-                </p>
-
+                     
                 <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Ordenar por 
