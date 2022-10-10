@@ -1,7 +1,7 @@
 <?php require_once("validar.php");
 require_once("menu_principal.php");?>
 <?php
-    $id_vaga = $_GET["id_vaga"];
+    $id_vaga = $_GET["id"];
     $conn = mysqli_connect("127.0.0.1", "root", "", "empregue_se");
     if($conn){
         $sql = "SELECT * FROM vaga WHERE id = $id_vaga";
@@ -64,11 +64,11 @@ require_once("menu_principal.php");?>
                 </div>
 
                 <div class="row">   
-                    <div class="d-grid gap-2 col-6 mx-auto">
-                        <button class="btn btn-light btn-lg btn-block" type="submit">Candidatar-se</button>
+                    <div class="d-grid gap-2 col-4 mx-auto">
+                        <a class="btn btn-light btn-lg btn-block" type="submit">Candidatar-se</a>
                     </div>
                     <div class="d-grid gap-2 col-4 mx-auto">
-                        <button class="btn btn-light btn-lg btn-block" type="submit">Cancelar</button>
+                        <a href="index.php" class="btn btn-light btn-lg btn-block" type="submit" >Cancelar</a>
                     </div>
                 </div>
             </form>

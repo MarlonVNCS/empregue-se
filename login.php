@@ -64,6 +64,8 @@
                                     if($registro['senha'] == $senha){
                                         setcookie("login", $registro["id"]);
                                         setcookie("tipo", "cliente");
+                                        session_start();
+                                        $_SESSION["id_cliente"] = $registro['id'];
                                         header("location: conta_cliente.php");
                                     } else{
                                         echo("Senha incorreta");
