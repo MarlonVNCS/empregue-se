@@ -45,7 +45,7 @@
                                     if($registro['senha'] == $senha){
                                         setcookie("login", $registro["id"]);
                                         setcookie("tipo", "empresa");
-                                        header("location: empresa.php");
+                                        header("location: conta_empresa.php");
                                     } else{
                                         echo("Senha incorreta");
                                     }
@@ -64,7 +64,7 @@
                                     if($registro['senha'] == $senha){
                                         setcookie("login", $registro["id"]);
                                         setcookie("tipo", "cliente");
-                                        header("location: cliente.php");
+                                        header("location: conta_cliente.php");
                                     } else{
                                         echo("Senha incorreta");
                                     }
