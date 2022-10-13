@@ -50,17 +50,17 @@ require_once("menu_principal.php");?>
 
                 <div class="mb-3">
                     <label for="area_atuacao" class="form-label">Área de atuação</label>
-                    <textarea class="form-control" id="area_atuacao" rows="4" placeholder="<?php echo($area);?>" readonly></textarea>
+                    <input class="form-control" id="area_atuacao" rows="4" value="<?php echo($area);?>" readonly></input>
                 </div>
 
                 <div class="mb-3">
                     <label for="formacao_academica" class="form-label">Formação acadêmica</label>
-                    <textarea class="form-control" id="formacao_academica" rows="4" placeholder="Dados" readonly></textarea>
+                    <input class="form-control" id="formacao_academica" rows="4" value="Dados" readonly></input>
                 </div>
 
                 <div class="mb-3">
                     <label for="experiencia" class="form-label">Experiência</label>
-                    <textarea class="form-control" id="experiencia" rows="4" placeholder="<?php echo($expe);?>" readonly></textarea>
+                    <input class="form-control" id="experiencia" rows="4" value="<?php echo($expe);?>" readonly></input>
                 </div>
 
                 <div class="row">
