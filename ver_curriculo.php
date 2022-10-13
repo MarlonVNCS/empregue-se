@@ -2,11 +2,11 @@
 require_once("menu_principal.php");?>
 <?php
     session_start();
-    //$id_cli=$_SESSION['id_cliente'];
+    $id_cli=$_SESSION['login'];
 
     $conn = mysqli_connect("localhost", "root", "", "empregue_se");
     if($conn){
-        $sql = "SELECT * FROM cliente WHERE id = 3";
+        $sql = "SELECT * FROM cliente WHERE id = $id_cli";
         $consulta = mysqli_query($conn,$sql);
         if(mysqli_num_rows($consulta) == 1){
             $curriculo = mysqli_fetch_array($consulta);
@@ -14,15 +14,20 @@ require_once("menu_principal.php");?>
             $nome = $curriculo['nome'];
             $cpf = $curriculo['cpf'];
             $nasc = $curriculo['nascimento'];
+            $idade = date('Y')-$nasc;
             $tel = $curriculo['telefone'];
             $end = $curriculo['endereco'];
             $email = $curriculo['email'];
             $area = $curriculo['areaDeAtuacao'];
             $expe = $curriculo['experiencia'];
             $sexo = $curriculo['sexo'];
-                if($sexo == "m"){
-                    $sexo = "Masculino";
-                }else{$sexo = "Feminino";}
+            if($sexo == "m"){
+                $sexo = "Masculino";
+            }else if($sexo == 'f'){
+                $sexo = "Feminino";
+            }else{
+                $sexo="Prefiro não dizer";}
+                
         }else{header("location: login.php");}
     }else{echo("Falha na conexão");}
 ?>
@@ -39,7 +44,7 @@ require_once("menu_principal.php");?>
                 <div class="row">
                     <div class="col">
                     <label form="idade" class="form-label">Idade</label>
-                    <input class="form-control" type="text" value="<?php echo($nac);?>" readonly>
+                    <input class="form-control" type="text" value="<?php echo($idade);?>" readonly>
                     </div>
                     <div class="col">
                         <label form="sexo" class="form-label">Sexo</label>
@@ -82,10 +87,7 @@ require_once("menu_principal.php");?>
 
                 <div class="row">   
                     <div class="d-grid gap-2 col-3 mx-auto" style="margin: 15px;">
-                        <button class="btn btn-light btn-lg btn-block" type="submit">Salvar</button>
-                    </div>
-                    <div class="d-grid gap-2 col-3 mx-auto" style="margin: 15px;">
-                        <button class="btn btn-light btn-lg btn-block" type="submit">Cancelar</button>
+                    <a class="btn btn-light btn-lg btn-block" type="submit" name="voltar" href="conta_cliente.php" value="">Voltar</a> 
                     </div>
                 </div>
             </form>

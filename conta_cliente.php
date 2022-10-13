@@ -6,7 +6,7 @@ require_once("menu_principal.php");
         <link rel="stylesheet" href="style.css">
         <nav class="abc">
             <ul>
-            <li><a href="criar_curriculo.php">Criar curriculo</a></li><!--Adiciona os dados de formação -->
+            <li><a href="criar_curriculo.php">Atualizar curriculo</a></li><!--Adiciona os dados de formação -->
             <li><a href="index.php">Procurar Vagas</a></li><!--Ve todas as vagas que estão sendo ofertadas -->
             <li><a href="ver_curriculo.php">Curriculo</a></li><!--Pode verificar/editar o seu curriculo -->
             </ul>

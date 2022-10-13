@@ -1,25 +1,26 @@
 <?php require_once("menu_login.php")?>
-        <div class="row">
-            <div class="text-center">
-                <h4>Fazer login</h4>
-            </div>
-            <form method="POST" class="needs-validation">
-                <div class="mb-3">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" placeholder="email@exemplo.com" name="email">
-                </div>
-                <div class="mb-3">
-                    <label for="senha">Senha</label>
-                    <input type="password" class="form-control" id="senha" name="senha">
-                    <a class="text-light text-decoration-none" href="">Esqueceu sua senha?</a>
-                </div>
-                <div class="d-grid gap-2 col-3 mx-auto">
-                    <button class="btn btn-light btn-lg btn-block" type="submit" name="enviar" value="Enviar">Acessar</button> 
-                </div>
-            </form>
+<div class="row">
+    <div class="text-center">
+        <h4>Fazer login</h4>
+    </div>
+    <form method="POST" class="needs-validation">
+        <div class="mb-3">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="email@exemplo.com" name="email">
         </div>
-        <div id="php" class="text-danger">
+        <div class="mb-3">
+            <label for="senha">Senha</label>
+            <input type="password" class="form-control" id="senha" name="senha">
+            <a class="text-light text-decoration-none" href="">Esqueceu sua senha?</a>
+        </div>
+        <div class="d-grid gap-2 col-3 mx-auto">
+            <button class="btn btn-light btn-lg btn-block" type="submit" name="enviar" value="Enviar">Acessar</button> 
+        </div>
+    </form>
+</div>
+<div id="php" class="text-danger">
             <?php
+            session_start();
                 if(isset($_POST['enviar']) == true){
                     if(empty($_POST['email'])){
                         echo("Por favor, preencha o email.<br>");
@@ -43,8 +44,11 @@
                                 if($registro['email'] == $email){
                                     $email_valido = true;
                                     if($registro['senha'] == $senha){
-                                        setcookie("login", $registro["id"]);
-                                        setcookie("tipo", "empresa");
+                                        /*setcookie("login", $registro["id"]);
+                                        setcookie("tipo", "empresa");*/
+
+                                        $_SESSION["login"] = $registro['id'];
+                                        $_SESSION["tipo"] = "empresa";
                                         header("location: conta_empresa.php");
                                     } else{
                                         echo("Senha incorreta");
@@ -61,10 +65,11 @@
                                 if($registro['email'] == $email){
                                     $email_valido = true;
                                     if($registro['senha'] == $senha){
-                                        setcookie("login", $registro["id"]);
-                                        setcookie("tipo", "cliente");
-                                        session_start();
-                                        $_SESSION["id_cliente"] = $registro['id'];
+                                        /*etcookie("login", $registro["id"]);
+                                        setcookie("tipo", "cliente");*/
+                                        
+                                        $_SESSION["login"] = $registro['id'];
+                                        $_SESSION["tipo"] = "cliente";
                                         header("location: conta_cliente.php");
                                     } else{
                                         echo("Senha incorreta");

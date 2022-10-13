@@ -1,7 +1,7 @@
 <?php require_once("validar.php");
 require_once("menu_principal.php");
 session_start();
-$id_cli=$_SESSION['id_cliente'];
+$id_cli=$_SESSION['login'];
 
 $conn = mysqli_connect("127.0.0.1", "root", "", "empregue_se");
 if($conn){
@@ -21,7 +21,10 @@ if($conn){
         $sexo = $curriculo['sexo'];
         if($sexo == "m"){
             $sexo = "Masculino";
-        }else{$sexo = "Feminino";}
+        }else if($sexo == 'f'){
+            $sexo = "Feminino";
+        }else{
+            $sexo="Prefiro não dizer";}
 
     }else{header("location: login.php");}
 }else{echo("Falha na conexão");}
@@ -47,7 +50,11 @@ if($conn){
                     </div>
                     <div class="col">
                         <label form="sexo" class="form-label">Sexo</label>
-                        <input class="form-control" type="text" name='sexo' value="<?php echo($sexo);?>">
+                        <select class="form-control" type="text" name='sexo' value="<?php echo($sexo);?>">
+                            <option value='m'>Masculino</option>
+                            <option value='f'>Feminino</option>
+                            <option value='n'>Prefiro não responder</option>
+                        </select>
                         <!-- placeholder="Last name" aria-label="Last name"-->
                     </div>
                 </div>
@@ -97,7 +104,7 @@ if($conn){
                         $expe=$_POST['expe'];
                         $sexo=$_POST['sexo'];
                         if($conn){
-                            if($sexo == 'Masculino' || $sexo == 'masculino' || $sexo == 'Feminino' || $sexo == 'feminino'){
+                            /*if($sexo == 'Masculino' || $sexo == 'masculino' || $sexo == 'Feminino' || $sexo == 'feminino'){
                                 if($sexo == 'Masculino' || $sexo == 'masculino'){
                                     $sexo = "m";
                                 }else if($sexo == 'Feminino' || $sexo == 'feminino'){
@@ -105,7 +112,7 @@ if($conn){
                                 }else{
                                     echo("erro no cadastro");
                                     header("location: conta_cliente.php");
-                                }
+                                }*/
                               //echo $sql = "UPDATE cliente SET nome = '$nome', cpf = '$cpf', nascimento = '$nasc', telefone='$tel',endereco ='$end',email='$email', areaDeAtuacao = '$area', experiencia = '$expe', sexo='$sexo' WHERE id = '$id_cli'";
                                 $sql = "UPDATE cliente SET nome = '$nome', nascimento = '$nasc', telefone='$tel',email='$email', areaDeAtuacao = '$area', experiencia = '$expe', sexo = '$sexo' WHERE id = '$id_cli'";
                             
@@ -116,7 +123,7 @@ if($conn){
                                     location.href = 'conta_cliente.php';
                                     </script>");
                                 }else{echo("Tudo errado");}
-                            }
+                            
                         }
                     
                     }

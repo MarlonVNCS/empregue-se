@@ -1,5 +1,6 @@
 <?php
 require_once("menu_principal.php");
+session_start();
 ?>
     
 <div class="container py-5">
