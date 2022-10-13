@@ -1,37 +1,32 @@
 <?php require_once("validar.php");
-require_once("menu_principal.php");
-//$id_cliente=$_GET["idc"];
-session_start();
-$id_cie=$_SESSION['id_cliente'];
+require_once("menu_principal.php");?>
+<?php
+    session_start();
+    //$id_cli=$_SESSION['id_cliente'];
 
-$conn = mysqli_connect("127.0.0.1", "root", "", "empregue_se");
-if($conn){
-    $sql = "SELECT * FROM cliente WHERE id = $id_cie";
-    $Consulta = mysqli_query($conn,$sql);
-    if(mysqli_num_rows($Consulta) == 1){
-        $curriculo = mysqli_fetch_array($Consulta);
-        
-        $nome = $curriculo['nome'];
-        $cpf = $curriculo['cpf'];
-        $nasc = $curriculo['nascimento'];
-        $tel = $curriculo['telefone'];
-        $end = $curriculo['endereco'];
-        $email = $curriculo['email'];
-        $area = $curriculo['areaDeAtuacao'];
-        $expe = $curriculo['experiencia'];
-        $sexo = $curriculo['sexo'];
-        if($sexo == "m"){
-            $sexo = "Masculino";
-        }else{$sexo = "Feminino";}
-
-    }else{header("location: login.php");}
-}else{echo("Falha na conexão");}
-
-
-
-
+    $conn = mysqli_connect("localhost", "root", "", "empregue_se");
+    if($conn){
+        $sql = "SELECT * FROM cliente WHERE id = 3";
+        $consulta = mysqli_query($conn,$sql);
+        if(mysqli_num_rows($consulta) == 1){
+            $curriculo = mysqli_fetch_array($consulta);
+            
+            $nome = $curriculo['nome'];
+            $cpf = $curriculo['cpf'];
+            $nasc = $curriculo['nascimento'];
+            $tel = $curriculo['telefone'];
+            $end = $curriculo['endereco'];
+            $email = $curriculo['email'];
+            $area = $curriculo['areaDeAtuacao'];
+            $expe = $curriculo['experiencia'];
+            $sexo = $curriculo['sexo'];
+                if($sexo == "m"){
+                    $sexo = "Masculino";
+                }else{$sexo = "Feminino";}
+        }else{header("location: login.php");}
+    }else{echo("Falha na conexão");}
 ?>
-        <div class="row">
+        <div class="row" style="margin: 2%;">
             <div class="text-center">
                 <h4>Currículo</h4>
             </div>
@@ -43,8 +38,8 @@ if($conn){
                 </div>
                 <div class="row">
                     <div class="col">
-                    <label form="idade" class="form-label">Nascimento</label>
-                      <input class="form-control" type="text" value="<?php echo($nasc);?>" readonly>
+                    <label form="idade" class="form-label">Idade</label>
+                    <input class="form-control" type="text" value="<?php echo($nac);?>" readonly>
                     </div>
                     <div class="col">
                         <label form="sexo" class="form-label">Sexo</label>
@@ -60,7 +55,7 @@ if($conn){
 
                 <div class="mb-3">
                     <label for="formacao_academica" class="form-label">Formação acadêmica</label>
-                    <textarea class="form-control" id="formacao_academica" rows="4" placeholder="Dados do currículo" readonly></textarea>
+                    <textarea class="form-control" id="formacao_academica" rows="4" placeholder="Dados" readonly></textarea>
                 </div>
 
                 <div class="mb-3">
@@ -78,11 +73,19 @@ if($conn){
                             <input class="form-control" type="text" value="<?php echo($tel);?>" readonly>
                     </div>
                 </div>
-                
+
+                <div class="mb-3">
+                    <label for="endereco" class="form-label">Endereço</label>
+                    <input class="form-control" type="text" value="<?php echo($end);?>" readonly> 
+                    
+                </div>
 
                 <div class="row">   
-                    <div class="d-grid gap-2 col-3 mx-auto">
-                        <a href="conta_cliente.php" class="btn btn-light btn-lg btn-block" type="submit">Voltar</a>
+                    <div class="d-grid gap-2 col-3 mx-auto" style="margin: 15px;">
+                        <button class="btn btn-light btn-lg btn-block" type="submit">Salvar</button>
+                    </div>
+                    <div class="d-grid gap-2 col-3 mx-auto" style="margin: 15px;">
+                        <button class="btn btn-light btn-lg btn-block" type="submit">Cancelar</button>
                     </div>
                 </div>
             </form>

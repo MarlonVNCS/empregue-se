@@ -22,10 +22,10 @@
                     <input type="text" class="form-control" id="cpf" name="cpf" placeholder="000.000.000-00">
                 </div>
                 <div class="mb-3">
-                    <label for="sexo">Sexo</label>
+                    <label for="sexo">Gênero</label>
                     <select class="form-select" name="sexo">
-                        <option value="f">Feminino</option>
                         <option value="m">Masculino</option>
+                        <option value="f">Feminino</option>
                     </select>        
                 </div>
                 <div class="mb-3">

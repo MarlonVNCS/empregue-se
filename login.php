@@ -53,7 +53,6 @@
                             }
                             
                         }
-                        
                         $sql = "SELECT id, email, senha FROM cliente";
                         $registros = mysqli_query($conn, $sql);
                         
@@ -74,7 +73,6 @@
                             }
                             
                         }
-
                         if(!$email_valido){
                             echo("Conta não existente.");
                         }

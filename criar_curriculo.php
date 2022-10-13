@@ -43,7 +43,7 @@ if($conn){
                 <div class="row">
                     <div class="col">
                     <label form="idade" class="form-label">Nascimento</label>
-                      <input class="form-control" type="date" name='nasc1' value="<?php echo($nasc);?>">
+                    <input class="form-control" type="date" name='nasc1' value="<?php echo($nasc);?>">
                     </div>
                     <div class="col">
                         <label form="sexo" class="form-label">Sexo</label>
@@ -104,7 +104,7 @@ if($conn){
                                     $sexo1 = "f";
                                 }else{
                                     echo("erro no cadastro");
-                                    header(location: "conta_cliente");
+                                    header("location: conta_cliente.php");
                                 }
                               //echo $sql = "UPDATE cliente SET nome = '$nome1', cpf = '$cpf1', nascimento = '$nasc1', telefone='$tel',endereco ='$end',email='$email', areaDeAtuacao = '$area', experiencia = '$expe', sexo='$sexo' WHERE id = '$id_cli'";
                                 $sql = "UPDATE cliente SET nome = '$nome1', nascimento = '$nasc1', telefone='$tel1',email='$email1', areaDeAtuacao = '$area1', experiencia = '$expe1', sexo = '$sexo1' WHERE id = '$id_cli'";
