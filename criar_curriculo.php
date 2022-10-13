@@ -1,6 +1,6 @@
 <?php require_once("validar.php");
 require_once("menu_principal.php");
-session_start();
+
 $id_cli=$_SESSION['login'];
 
 $conn = mysqli_connect("127.0.0.1", "root", "", "empregue_se");
@@ -19,17 +19,15 @@ if($conn){
         $area = $curriculo['areaDeAtuacao'];
         $expe = $curriculo['experiencia'];
         $sexo = $curriculo['sexo'];
-        if($sexo == "m"){
-            $sexo = "Masculino";
-        }else if($sexo == 'f'){
-            $sexo = "Feminino";
-        }else{
-            $sexo="Prefiro não dizer";}
 
     }else{header("location: login.php");}
 }else{echo("Falha na conexão");}
 
-
+function op_sexo($sexo, $op){
+    if($sexo == $op){
+        echo("selected");
+    }
+}
 
 
 ?>
@@ -51,9 +49,9 @@ if($conn){
                     <div class="col">
                         <label form="sexo" class="form-label">Sexo</label>
                         <select class="form-control" type="text" name='sexo' value="<?php echo($sexo);?>">
-                            <option value='m'>Masculino</option>
-                            <option value='f'>Feminino</option>
-                            <option value='n'>Prefiro não responder</option>
+                            <option value='m' <?php op_sexo($sexo, "m")?>>Masculino</option>
+                            <option value='f' <?php op_sexo($sexo, "f")?>>Feminino</option>
+                            <option value='n'<?php op_sexo($sexo, "n")?>>Prefiro não responder</option>
                         </select>
                         <!-- placeholder="Last name" aria-label="Last name"-->
                     </div>
