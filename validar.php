@@ -1,14 +1,8 @@
 <?php
 session_start();
-    /*if(!isset($_COOKIE['login']) && isset($_COOKIE['tipo'])){
-        if(!strpos($_SERVER['REQUEST_URI'], "login.php") && !strpos($_SERVER['REQUEST_URI'], "cadastro")){
-            header("location: index.php");
-        }
-    }*/
-    if(!isset($_SESSION['login']) && isset($_SESSION['tipo'])){
-        if(!strpos($_SERVER['REQUEST_URI'], "login.php") && !strpos($_SERVER['REQUEST_URI'], "cadastro")){
-            header("location: index.php");
-        }
+    if(!(isset($_SESSION['login']) && isset($_SESSION['tipo']))){
+        header("location: index.php");
+        
     }
 
 ?>
