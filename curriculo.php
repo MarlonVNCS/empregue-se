@@ -42,67 +42,68 @@ function editar(){
 
 
 ?>
-        <div class="row" style="margin: 2%;">
-            <div class="text-center">
-                <h4>Currículo</h4>
+<div class="row" style="margin: 2%;">
+    <div class="text-center">
+        <h4>Currículo</h4>
+    </div>
+    <form method="POST" class="needs-validation">
+        <div class="mb-3">
+            <label for="nome" class="form-label">Nome</label>
+            <input class="form-control" <?php editar()?> type="text" name='nome' value="<?php echo($nome);?>">
+        </div>
+        <div class="row">
+            <div class="col">
+                <label form="idade" class="form-label">Nascimento</label>
+                <input class="form-control" type="date" name='nasc' <?php editar()?> value="<?php echo($nasc);?>">
             </div>
-            <form method="POST" class="needs-validation">
-                <div class="mb-3">
-                    <label for="nome" class="form-label">Nome</label>
-                    <input class="form-control" <?php editar()?> type="text" name='nome'  value="<?php echo($nome);?>">
-                </div>
-                <div class="row">
-                    <div class="col">
-                    <label form="idade" class="form-label">Nascimento</label>
-                    <input class="form-control" type="date" name='nasc' <?php editar()?> value="<?php echo($nasc);?>">
-                    </div>
-                    <div class="col">
-                        <label form="sexo" <?php editar()?> class="form-label">Sexo</label>
-                        <select class="form-control" type="text" name='sexo' value="<?php echo($sexo);?>">
-                            <option value='m' <?php editar()?> <?php op_sexo($sexo, "m")?>>Masculino</option>
-                            <option value='f' <?php editar()?> <?php op_sexo($sexo, "f")?>>Feminino</option>
-                            <option value='n' <?php editar()?> <?php op_sexo($sexo, "n")?>>Prefiro não responder</option>
-                        </select>
-                        <!-- placeholder="Last name" aria-label="Last name"-->
-                    </div>
-                </div>
+            <div class="col">
+                <label form="sexo" <?php editar()?> class="form-label">Sexo</label>
+                <select class="form-control" type="text" name='sexo' value="<?php echo($sexo);?>">
+                    <option value='m' <?php editar()?> <?php op_sexo($sexo, "m")?>>Masculino</option>
+                    <option value='f' <?php editar()?> <?php op_sexo($sexo, "f")?>>Feminino</option>
+                    <option value='n' <?php editar()?> <?php op_sexo($sexo, "n")?>>Prefiro não responder</option>
+                </select>
+                <!-- placeholder="Last name" aria-label="Last name"-->
+            </div>
+        </div>
 
-                <div class="mb-3">
-                    <label for="area_atuacao" class="form-label">Área de atuação</label>
-                    <input class="form-control" <?php editar()?> name="area" rows="4" value="<?php echo($area);?>"></input>
-                </div>
+        <div class="mb-3">
+            <label for="area_atuacao" class="form-label">Área de atuação</label>
+            <input class="form-control" <?php editar()?> name="area" rows="4" value="<?php echo($area);?>"></input>
+        </div>
 
-                <div class="mb-3">
-                    <label for="formacao_academica" class="form-label">Formação acadêmica</label>
-                    <input class="form-control" <?php editar()?> name="formacao_academica" rows="4" value="Dados do currículo"></input>
-                </div>
+        <div class="mb-3">
+            <label for="formacao_academica" class="form-label">Formação acadêmica</label>
+            <input class="form-control" <?php editar()?> name="formacao_academica" rows="4"
+                value="Dados do currículo"></input>
+        </div>
 
-                <div class="mb-3">
-                    <label for="experiencia" class="form-label">Experiência</label>
-                    <input class="form-control" <?php editar()?> name="expe" rows="4" value="<?php echo($expe);?>"></input>
-                </div>
+        <div class="mb-3">
+            <label for="experiencia" class="form-label">Experiência</label>
+            <input class="form-control" <?php editar()?> name="expe" rows="4" value="<?php echo($expe);?>"></input>
+        </div>
 
-                <div class="row">
-                    <div class="col">
-                        <label form="email" class="form-label">Email</label>
-                        <input class="form-control" <?php editar()?> type="text" name='email' value="<?php echo($email);?>">
-                    </div>
-                    <div class="col">
-                        <label form="numero_telefone" class="form-label">Número de telefone</label>
-                            <input class="form-control" <?php editar()?> type="text" name='tel' value="<?php echo($tel);?>">
-                        </div>
-                    </div>
-                    
-                    
-                    <div class="row"> 
-                        <div class="d-grid gap-2 col-3 mx-auto" style="margin: 15px;">
-                            <button class="btn btn-light btn-lg btn-block" type="submit" name="edit">Editar</button>
-                        </div>  
-                    <div class="d-grid gap-2 col-3 mx-auto" style="margin: 15px;">
-                        <a href="conta_cliente.php" class="btn btn-light btn-lg btn-block" type="submit">Voltar</a>
-                    </div>
-                </div>
-                <?php
+        <div class="row">
+            <div class="col">
+                <label form="email" class="form-label">Email</label>
+                <input class="form-control" <?php editar()?> type="text" name='email' value="<?php echo($email);?>">
+            </div>
+            <div class="col">
+                <label form="numero_telefone" class="form-label">Número de telefone</label>
+                <input class="form-control" <?php editar()?> type="text" name='tel' value="<?php echo($tel);?>">
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="d-grid gap-2 col-3 mx-auto" style="margin: 15px;">
+                <button class="btn btn-light btn-lg btn-block" type="submit" name="edit">Editar</button>
+            </div>
+            <div class="d-grid gap-2 col-3 mx-auto" style="margin: 15px;">
+                <a href="conta_cliente.php" class="btn btn-light btn-lg btn-block" type="submit">Voltar</a>
+            </div>
+        </div>
+        <?php
 
                     if(isset($_POST["edit"])){
 
@@ -138,8 +139,9 @@ function editar(){
                     
                     mysqli_close($conn);
                 ?>
-            </form>
-        </div>
-    </div>
+    </form>
+</div>
+</div>
 </body>
+
 </html>

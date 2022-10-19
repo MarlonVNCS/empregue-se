@@ -14,12 +14,12 @@
             <a class="text-light text-decoration-none" href="">Esqueceu sua senha?</a>
         </div>
         <div class="d-grid gap-2 col-3 mx-auto">
-            <button class="btn btn-light btn-lg btn-block" type="submit" name="enviar" value="Enviar">Acessar</button> 
+            <button class="btn btn-light btn-lg btn-block" type="submit" name="enviar" value="Enviar">Acessar</button>
         </div>
     </form>
 </div>
 <div id="php" class="text-danger">
-            <?php
+    <?php
             session_start();
                 if(isset($_POST['enviar']) == true){
                     if(empty($_POST['email'])){
@@ -70,7 +70,15 @@
                                         
                                         $_SESSION["login"] = $registro['id'];
                                         $_SESSION["tipo"] = "cliente";
-                                        header("location: conta_cliente.php");
+
+                                        if(isset($_SESSION["pag"])){
+                                            $pagina = $_SESSION["pag"];
+                                        } else{
+                                            $pagina = "conta_cliente.php";
+                                        }
+                                        
+                                        unset($_SESSION["pag"]);
+                                        header("location: $pagina");
                                     } else{
                                         echo("Senha incorreta");
                                     }
@@ -85,14 +93,16 @@
                     
                 }}}
                 ?>
-        </div>
-        
-        <div class="text-warning"> <!-- Essa classe só ta para destacar o texto enquanto n arrumamos o botão-->
-            <button id="possui" class="text-warning btn" type="button" >Não possui conta?</button> <br>
-            <div id="contas"></div>
-        </div>
-    </div>
-    
+</div>
+
+<div class="text-warning">
+    <!-- Essa classe só ta para destacar o texto enquanto n arrumamos o botão-->
+    <button id="possui" class="text-warning btn" type="button">Não possui conta?</button> <br>
+    <div id="contas"></div>
+</div>
+</div>
+
 
 </body>
+
 </html>
