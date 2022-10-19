@@ -110,31 +110,18 @@ require_once("menu_principal.php");
                                 $resultado = mysqli_query($conn, $sql);
                             }
                                     
-                            while ($vaga =  mysqli_fetch_array($resultado)) {
-                                $id = $vaga["id"];
-                                $nome = $vaga["nome"];
-                                $quantidade = $vaga["quantidade"];
-                                $status = $vaga["status"];
-                                $disponiveis=$quantidade-$status;
-                                echo("<a href='ver_vaga.php?id=$vaga[id]' class='btn btn-primary my-2'>
-                                Vaga: $nome // Vagas disponiveis: $disponiveis</a>");
-                                        
-                                        
-                            }
                         }else{
                             $sql = "SELECT * FROM vaga ORDER BY nome ASC";
                             $resultado = mysqli_query($conn, $sql);
-                                    
-                            while ($vaga =  mysqli_fetch_array($resultado)) {
-                                $id = $vaga["id"];
-                                $nome = $vaga["nome"];
-                                $quantidade = $vaga["quantidade"];
-                                $status = $vaga["status"];
-                                $disponiveis=$quantidade-$status;
-                                echo("<a href='ver_vaga.php?id=$vaga[id]' class='btn btn-primary my-2'>
-                                Vaga: $nome // Vagas disponiveis: $disponiveis</a>");
-
-                            }
+                        }
+                        while ($vaga =  mysqli_fetch_array($resultado)) {
+                            $id = $vaga["id"];
+                            $nome = $vaga["nome"];
+                            $quantidade = $vaga["quantidade"];
+                            $status = $vaga["status"];
+                            $disponiveis=$quantidade-$status;
+                            echo("<a href='ver_vaga.php?id=$vaga[id]' class='btn btn-primary my-2'>
+                            Vaga: $nome // Vagas disponiveis: $disponiveis</a>");                                                                          
                         }
                     }
 
