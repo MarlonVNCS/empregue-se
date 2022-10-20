@@ -1,4 +1,8 @@
-<?php session_start();?>
+<?php
+if(session_id() == '') {
+    session_start();
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -56,7 +60,7 @@
                     </ul>
                     <div class="d-flex">
                         <div class="btn-group">
-                            <button class="btn btn-secondary btn" type="button">
+                            <button class="btn btn-secondary btn" name="conta" type="button">
                                 Conta
                             </button>
                             <button type="button" class="btn btn btn-secondary dropdown-toggle dropdown-toggle-split"
@@ -64,14 +68,7 @@
                                 <span class="visually-hidden">Toggle Dropdown</span>
                             </button>
                             <ul class="dropdown-menu dropdown-menu-lg-end">
-                                <li><a class="dropdown-item" href="curriculo.php">Curriculo</a>
-                                </li>
-                                <li><a class="dropdown-item" href="#">Vagas candidatadas</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="logout.php">Sair</a>
-                                </li>
+                                <?php validar()?> 
                             </ul>
                         </div>
                     </div>
@@ -79,10 +76,37 @@
                 <?php
                     function validar(){
                         if(isset($_SESSION["login"])){
-                            
+                            if($_SESSION["tipo"] == "cliente"){
+
+                                echo('<li><a class="dropdown-item" href="curriculo.php">Curriculo</a>
+                                </li>
+                                <li><a class="dropdown-item" href="#">Vagas candidatadas</a></li>
+                                <li>
+                                <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="logout.php">Sair</a>
+                                </li>
+                                ');
+                            } else if($_SESSION["tipo"] == "empresa"){
+                                echo('<li><a class="dropdown-item" href="index.php">Vagas</a>
+                                </li>
+                                <li><a class="dropdown-item" href="#">Conta</a></li>
+                                <li>
+                                <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="logout.php">Sair</a>
+                                </li>
+                                ');
+                            }
+                        }else{
+                            echo('<li>
+                                    <a class="dropdown-item" href="login.php">Entrar/Criar conta</a>
+                                </li>
+                                ');
                         }
 
                     }
+                    
                 ?>
             </div>
         </nav>
