@@ -10,7 +10,7 @@ require_once("menu_principal.php");
         <!--Adiciona os dados de formação -->
         <li><a href="index.php">Procurar Vagas</a></li>
         <!--Ve todas as vagas que estão sendo ofertadas -->
-        <li><a href="">Vagas candidatadas</a></li>
+        <li><a href="vagas_candidatadas.php">Vagas candidatadas</a></li>
         <!--Pode verificar/editar o seu curriculo -->
     </ul>
 </nav>

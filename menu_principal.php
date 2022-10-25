@@ -80,7 +80,7 @@ if(session_id() == '') {
 
                                 echo('<li><a class="dropdown-item" href="curriculo.php">Curriculo</a>
                                 </li>
-                                <li><a class="dropdown-item" href="#">Vagas candidatadas</a></li>
+                                <li><a class="dropdown-item" href="vagas_candidatadas.php">Vagas candidatadas</a></li>
                                 <li>
                                 <hr class="dropdown-divider">
                                 </li>

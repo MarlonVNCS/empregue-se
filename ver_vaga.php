@@ -78,7 +78,16 @@
                         $_SESSION["pag"] = $_SERVER['REQUEST_URI'];
                         echo ("<script>location.href = 'login.php';</script>");
                     }
-
+                    else{
+                        $sql = "INSERT INTO candidato_vaga (id_vaga,id_cliente) VALUE ('$id_vaga','$_SESSION[login]')";
+                        if(mysqli_query($conn, $sql)){
+                            echo ("
+                            <script>
+                            alert('Você se candidatou a vaga');
+                            location.href = 'index.php';
+                            </script>");
+                        }
+                    }
                 }
                         
             ?>
