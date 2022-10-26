@@ -22,7 +22,7 @@ require_once("menu_principal.php");?>
 </head>
 
 <body class="bg-dark text-light">
-    <div class="row">
+    <div class="container" style="max-width: 36.5rem;">
         <div class="text-center">
             <h4>Vaga de emprego</h4>
         </div>
@@ -57,10 +57,10 @@ require_once("menu_principal.php");?>
             </div>
 
             <div class="row">
-                <div class="d-grid gap-2 col-6 mx-auto">
+                <div class="d-grid gap-2 col-3 mx-auto">
                     <button class="btn btn-light btn-lg btn-block" type="submit">Criar</button>
                 </div>
-                <div class="d-grid gap-2 col-4 mx-auto">
+                <div class="d-grid gap-2 col-3 mx-auto">
                     <button class="btn btn-light btn-lg btn-block" type="submit">Cancelar</button>
                 </div>
             </div>

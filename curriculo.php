@@ -100,10 +100,16 @@ function editar(){
                 <button class="btn btn-light btn-lg btn-block" type="submit" name="edit">Editar</button>
             </div>
             <div class="d-grid gap-2 col-3 mx-auto" style="margin: 15px;">
-                <a href="conta_cliente.php" class="btn btn-light btn-lg btn-block" type="submit">Voltar</a>
+                <button class="btn btn-light btn-lg btn-block" type="submit" name="voltar">Voltar</button>
             </div>
         </div>
         <?php
+                    if(isset($_POST["voltar"])){
+                        if(isset($_SESSION["editar"])){
+                            unset($_SESSION["editar"]);
+                        }
+                        echo ("<script>location.href = 'index.php';</script>");
+                    }
 
                     if(isset($_POST["edit"])){
 
@@ -114,25 +120,23 @@ function editar(){
                         }else{
                             unset($_SESSION["editar"]);
 
-                        }
-
-                    
-                        
-                        $nome=$_POST['nome'];
-                        $nasc=$_POST['nasc'];
-                        $tel=$_POST['tel'];
-                        $email=$_POST['email'];
-                        $area=$_POST['area'];
-                        $expe=$_POST['expe'];
-                        $sexo=$_POST['sexo'];
-                        if($conn){
-                                $sql = "UPDATE cliente SET nome = '$nome', nascimento = '$nasc', telefone='$tel',email='$email', areaDeAtuacao = '$area', experiencia = '$expe', sexo = '$sexo' WHERE id = '$id_cli'";
-                            
-                                if (mysqli_query($conn, $sql)){
-                                    //echo ("<script>alert('Curriculo criado com sucesso');location.href = 'conta_cliente.php';</script>");
-                                    echo ("<script>location.href = 'curriculo.php';</script>");
-                                }else{echo("Tudo errado");}
-                            
+                            $nome=$_POST['nome'];
+                            $nasc=$_POST['nasc'];
+                            $tel=$_POST['tel'];
+                            $email=$_POST['email'];
+                            $area=$_POST['area'];
+                            $expe=$_POST['expe'];
+                            $sexo=$_POST['sexo'];
+                            if($conn){
+                                    $sql = "UPDATE cliente SET nome = '$nome', nascimento = '$nasc', telefone='$tel',email='$email', areaDeAtuacao = '$area', experiencia = '$expe', sexo = '$sexo' WHERE id = '$id_cli'";
+                                
+                                    if (mysqli_query($conn, $sql)){
+                                        //echo ("<script>alert('Curriculo criado com sucesso');location.href = 'conta_cliente.php';</script>");
+                                        echo ("<script>location.href = 'curriculo.php';</script>");
+                                    }else{echo("Tudo errado");}
+                                
+                            }
+                            echo ("<script>location.href = 'curriculo.php';</script>");
                         }
                     
                     }
