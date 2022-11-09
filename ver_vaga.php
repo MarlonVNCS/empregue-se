@@ -45,19 +45,8 @@
     
     }
 ?>
-<div class="container" style="max-width: 36.5rem;">
-    <div class="text-center">
-        <h4>Vaga</h4>
-    </div>
+<div class="container" style="max-width: 50.0rem;">
     <form method="POST" class="needs-validation">
-        <div class="mb-3">
-            <label for="nome_vaga" class="form-label">Nome da vaga</label>
-            <input class="form-control" type="text" value="<?php echo($nome);?>" <?php editar($tipo_usuario);?>>
-            <!-- não deixa alterar o q esta na caixa de texto readonly-->
-
-        </div>
-        <div class="mb-3">
-            <label for="nome_empresa" class="form-label">Empresa</label>
             <?php
                         $conn = mysqli_connect("127.0.0.1", "root", "", "empregue_se");
                         if($conn){
@@ -69,35 +58,43 @@
                             }
                         }
                     ?>
-            <input class="form-control" type="text" value="<?php echo($nomeempresa);?>" <?php editar($tipo_usuario);?>>
+    <div class="col-lg-20">
 
-        </div>
+            <div class="dropdown-menu position-static d-grid gap-1 p-2 rounded-3 mx-1 shadow w-220px">
+
+                <h1 class="h1">Informações da vaga</h1>
+
+                
+                    <hr class="dropdown-divider">
+                    <h1 style= "height: 50px;" class="h3">Nome da Vaga: <?php echo($nome); ?></h1>
+                    <hr class="dropdown-divider">
+
+                    <h1 style= "height: 50px;" class="h3">Empresa: <?php echo($nomeempresa); ?></h1>
+                    <hr class="dropdown-divider">
+
+                    <h1 style= "height: 50px;" class="h3">Descrição: <?php echo($descri); ?></h1>
+                    <hr class="dropdown-divider">
+
+                    <h1 style= "height: 50px;" class="h3">Numero de Vagas Disponíveis: <?php echo($total); ?></h1>
+                    <hr class="dropdown-divider">
+
+                    <h1 style= "height: 50px;" class="h3">Area: <?php  ?></h1>
+                
 
 
-        <div class="mb-3">
-            <label for="descrição" class="form-label">Descrição</label>
-            <input class="form-control" type="text" value="<?php echo($descri);?>" <?php editar($tipo_usuario);?>>
-        </div>
-        <div class="mb-3">
-            <label for="vagas_ofertadas" class="form-label">Vagas ofertadas</label>
-            <input class="form-control" type="number" value="<?php echo($total);?>" <?php editar($tipo_usuario);?>>
-
-        </div>
-
-        <div class="mb-3">
-            <label for="endereco" class="form-label">Area</label>
-            <input class="form-control" type="text" value="Dados da vaga" <?php editar($tipo_usuario);?>>
-
-        </div>
-
-        <div class="row">
-            <div class="d-grid gap-2 col-3 mx-auto">
-                <button class="btn btn-light btn-lg btn-block" name="candi" type="submit"><?php edit_vaga($tipo_usuario);?></button>
             </div>
-            <div class="d-grid gap-2 col-3 mx-auto">
-                <a href="index.php" class="btn btn-light btn-lg btn-block" type="submit">Cancelar</a>
-            </div>
+
         </div>
+
+    <div class="row">
+
+        <div class="d-grid gap-2 col-3 mx-auto">
+            <button class="btn btn-light btn-lg btn-block" type="submit" name="candi"><?php edit_vaga($tipo_usuario) ?></button>
+        </div>
+        <div class="d-grid gap-2 col-3 mx-auto">
+            <a href="index.php" class="btn btn-light btn-lg btn-block" type="submit">Cancelar</a>
+        </div>
+    </div>
     </form>
     <?php
                 if(isset($_POST["candi"])){
