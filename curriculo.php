@@ -107,7 +107,7 @@ function editar(){
                         if(isset($_SESSION["editar"])){
                             unset($_SESSION["editar"]);
                         }
-                        echo ("<script>location.href = 'index.php';</script>");
+                        header("location: index.php");
                     }
 
                     if(isset($_POST["edit"])){
@@ -115,7 +115,7 @@ function editar(){
                         //pra editar os campos
                         if(!isset($_SESSION["editar"])){
                             $_SESSION["editar"] = "aa";
-                            echo ("<script>location.href = 'curriculo.php';</script>");
+                            header("location: curriculo.php");
                         }else{
                             unset($_SESSION["editar"]);
 
@@ -131,11 +131,11 @@ function editar(){
                                 
                                     if (mysqli_query($conn, $sql)){
                                         //echo ("<script>alert('Curriculo criado com sucesso');location.href = 'conta_cliente.php';</script>");
-                                        echo ("<script>location.href = 'curriculo.php';</script>");
+                                        header("location: curriculo.php");
                                     }else{echo("Tudo errado");}
                                 
                             }
-                            echo ("<script>location.href = 'curriculo.php';</script>");
+                            header("location: curriculo.php");
                         }
                     
                     }
