@@ -16,7 +16,6 @@ if($conn){
         $nasc = $curriculo['nascimento'];
         $tel = $curriculo['telefone'];
         $end = $curriculo['endereco'];
-        $email = $curriculo['email'];
         $area = $curriculo['areaDeAtuacao'];
         $expe = $curriculo['experiencia'];
         $sexo = $curriculo['sexo'];
@@ -53,11 +52,11 @@ function editar(){
         </div>
         <div class="row">
             <div class="col">
-                <label form="idade" class="form-label">Nascimento</label>
+                <label for="idade" class="form-label">Nascimento</label>
                 <input class="form-control" type="date" name='nasc' <?php editar()?> value="<?php echo($nasc);?>">
             </div>
             <div class="col">
-                <label form="sexo" <?php editar()?> class="form-label">Sexo</label>
+                <label for="sexo" <?php editar()?> class="form-label">Sexo</label>
                 <select class="form-control" type="text" name='sexo' value="<?php echo($sexo);?>">
                     <option value='m' <?php editar()?> <?php op_sexo($sexo, "m")?>>Masculino</option>
                     <option value='f' <?php editar()?> <?php op_sexo($sexo, "f")?>>Feminino</option>
@@ -85,11 +84,11 @@ function editar(){
 
         <div class="row">
             <div class="col">
-                <label form="email" class="form-label">Email</label>
-                <input class="form-control" <?php editar()?> type="text" name='email' value="<?php echo($email);?>">
+                <label for="endereco" class="form-label">Endereço</label>
+                <input class="form-control" <?php editar()?> type="text" name='end' value="<?php echo($end);?>">
             </div>
             <div class="col">
-                <label form="numero_telefone" class="form-label">Número de telefone</label>
+                <label for="numero_telefone" class="form-label">Número de telefone</label>
                 <input class="form-control" <?php editar()?> type="text" name='tel' value="<?php echo($tel);?>">
             </div>
         </div>
@@ -123,12 +122,12 @@ function editar(){
                             $nome=$_POST['nome'];
                             $nasc=$_POST['nasc'];
                             $tel=$_POST['tel'];
-                            $email=$_POST['email'];
                             $area=$_POST['area'];
                             $expe=$_POST['expe'];
                             $sexo=$_POST['sexo'];
+                            $end=$_POST['end'];
                             if($conn){
-                                    $sql = "UPDATE cliente SET nome = '$nome', nascimento = '$nasc', telefone='$tel',email='$email', areaDeAtuacao = '$area', experiencia = '$expe', sexo = '$sexo' WHERE id = '$id_cli'";
+                                    $sql = "UPDATE cliente SET nome = '$nome', nascimento = '$nasc', telefone='$tel', areaDeAtuacao = '$area', experiencia = '$expe', sexo = '$sexo', endereco = '$end' WHERE id = '$id_cli'";
                                 
                                     if (mysqli_query($conn, $sql)){
                                         //echo ("<script>alert('Curriculo criado com sucesso');location.href = 'conta_cliente.php';</script>");

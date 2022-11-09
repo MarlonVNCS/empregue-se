@@ -49,7 +49,13 @@
 
                                         $_SESSION["login"] = $registro['id'];
                                         $_SESSION["tipo"] = "empresa";
-                                        header("location: conta_empresa.php");
+                                        if(isset($_SESSION["pag"])){
+                                            $pagina = $_SESSION["pag"];
+                                        } else{
+                                            $pagina = "index.php";
+                                        }
+                                        unset($_SESSION["pag"]);
+                                        header("location: $pagina");
                                     } else{
                                         echo("Senha incorreta");
                                     }
@@ -74,7 +80,7 @@
                                         if(isset($_SESSION["pag"])){
                                             $pagina = $_SESSION["pag"];
                                         } else{
-                                            $pagina = "conta_cliente.php";
+                                            $pagina = "index.php";
                                         }
                                         
                                         unset($_SESSION["pag"]);

@@ -38,9 +38,6 @@ if(session_id() == '') {
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="index.php">Inicio</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="conta.php">Conta</a>
-                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
@@ -60,9 +57,7 @@ if(session_id() == '') {
                     </ul>
                     <div class="d-flex">
                         <div class="btn-group">
-                            <button class="btn btn-secondary btn" name="conta" type="button">
-                                Conta
-                            </button>
+                            <a class="btn btn-secondary btn" name="conta" href="conta.php">Conta</a>
                             <button type="button" class="btn btn btn-secondary dropdown-toggle dropdown-toggle-split"
                                 data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                                 <span class="visually-hidden">Toggle Dropdown</span>
