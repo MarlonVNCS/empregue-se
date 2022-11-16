@@ -115,12 +115,12 @@ require_once("menu_principal.php");
                             $resultado = mysqli_query($conn, $sql);
                         }
                         while ($vaga =  mysqli_fetch_array($resultado)) {
-                            $_SESSION["id_vaga"] = $vaga["id"];
+
                             $nome = $vaga["nome"];
                             $quantidade = $vaga["quantidade"];
                             $status = $vaga["status"];
                             $disponiveis=$quantidade-$status;
-                            echo("<a href='ver_vaga.php' class='btn btn-primary my-2'>
+                            echo("<a href='ver_vaga.php?id=$vaga[id]' class='btn btn-primary my-2'>
                             Vaga: $nome // Vagas disponiveis: $disponiveis</a>");                                                                          
                         }
                     }
