@@ -1,6 +1,7 @@
 <?php
     require_once("menu_principal.php");
-    $id_vaga = $_SESSION["id_vaga"];
+    $id_vaga = $_GET['id'];
+    $_SESSION["id_vaga"] = $id_vaga;
     $conn = mysqli_connect("127.0.0.1", "root", "", "empregue_se");
     if($conn){
         $sql = "SELECT * FROM vaga WHERE id = $id_vaga";
@@ -101,7 +102,7 @@
                     //pra editar os campos
                     if(!isset($_SESSION["editar"])){
                         $_SESSION["editar"] = "aa";
-                        echo ("<script>location.href = 'ver_vaga.php';</script>");
+                        echo ("<script>location.href = 'ver_vaga.php?id=$_SESSION[id_vaga]';</script>");
                     }else{
                         unset($_SESSION["editar"]);
 
@@ -110,7 +111,7 @@
                     if($tipo_usuario != "empresa"){
                         if(!(isset($_SESSION['login']) && isset($_SESSION['tipo']))){
                             $_SESSION["pag"] = $_SERVER['REQUEST_URI'];
-                            echo ("<script>location.href = 'login.php';</script>");
+                            echo ("<script>location.href = 'login.php?id=$_SESSION[id_vaga]';</script>");
                         }
                         else{
                             $sql = "INSERT INTO candidato_vaga (id_vaga,id_cliente) VALUE ('$id_vaga','$_SESSION[login]')";
@@ -120,6 +121,16 @@
                                 alert('Você se candidatou a vaga');
                                 location.href = 'index.php';
                                 </script>");
+                            }else{
+                                $sql = "UPDATE candidato_vaga SET id_vaga = '$id_vaga',id_cliente = '$_SESSION[login]')";
+                                if(mysqli_query($conn, $sql)){
+                                    echo ("
+                                    <script>
+                                    alert('Você já candidatou a vaga');
+                                    location.href = 'index.php';
+                                    </script>");
+                                }
+
                             }
                         }
 
