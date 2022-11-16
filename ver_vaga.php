@@ -99,14 +99,7 @@
     </form>
     <?php
                 if(isset($_POST["candi"])){
-                    //pra editar os campos
-                    if(!isset($_SESSION["editar"])){
-                        $_SESSION["editar"] = "aa";
-                        echo ("<script>location.href = 'ver_vaga.php?id=$_SESSION[id_vaga]';</script>");
-                    }else{
-                        unset($_SESSION["editar"]);
-
-                    }
+                  
                     
                     if($tipo_usuario != "empresa"){
                         if(!(isset($_SESSION['login']) && isset($_SESSION['tipo']))){
@@ -114,6 +107,15 @@
                             echo ("<script>location.href = 'login.php?id=$_SESSION[id_vaga]';</script>");
                         }
                         else{
+                            $vericacao = "SELECT * FROM `candidato_vaga` WHERE id_vaga=$id_vaga AND id_cliente=$_SESSION[login];";
+                            $verifica = mysqli_query($conn,$vericacao);
+                            if(mysqli_num_rows($verifica) > 0){
+                                echo ("
+                                <script>
+                                alert('Você já se candidatou a essa vaga');
+                                location.href = 'index.php';
+                                </script>");
+                            }
                             $sql = "INSERT INTO candidato_vaga (id_vaga,id_cliente) VALUE ('$id_vaga','$_SESSION[login]')";
                             if(mysqli_query($conn, $sql)){
                                 echo ("
@@ -121,16 +123,6 @@
                                 alert('Você se candidatou a vaga');
                                 location.href = 'index.php';
                                 </script>");
-                            }else{
-                                $sql = "UPDATE candidato_vaga SET id_vaga = '$id_vaga',id_cliente = '$_SESSION[login]')";
-                                if(mysqli_query($conn, $sql)){
-                                    echo ("
-                                    <script>
-                                    alert('Você já candidatou a vaga');
-                                    location.href = 'index.php';
-                                    </script>");
-                                }
-
                             }
                         }
 
