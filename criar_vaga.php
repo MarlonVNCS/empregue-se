@@ -29,42 +29,53 @@ require_once("menu_principal.php");?>
         <form method="POST" class="needs-validation">
             <div class="mb-3">
                 <label for="nome_vaga" class="form-label">Nome da vaga</label>
-                <input class="form-control" id="nome_vaga" type="text" placeholder="">
+                <input class="form-control" id="nome_vaga" name="nome" type="text" placeholder="">
                 <!-- não deixa alterar o q esta na caixa de texto readonly-->
 
             </div>
             <div class="mb-3">
                 <label for="nome_empresa" class="form-label">Nome da empresa</label>
-                <input class="form-control" id="nome_empresa" type="text" placeholder="">
+                <input class="form-control" id="nome_empresa" name="nome_empresa" type="text" placeholder="">
 
             </div>
 
 
             <div class="mb-3">
                 <label for="descrição" class="form-label">Descrição</label>
-                <textarea class="form-control" id="descrição" rows="4" placeholder=""></textarea>
+                <textarea class="form-control" id="descrição" name="descricao" rows="4" placeholder=""></textarea>
             </div>
             <div class="mb-3">
                 <label for="vagas_ofertadas" class="form-label">Vagas ofertadas</label>
-                <input class="form-control" id="vagas_ofertadas" type="number" placeholder="" min="1">
+                <input class="form-control" id="vagas_ofertadas" name="vagas" type="number" placeholder="" min="1">
 
             </div>
 
             <div class="mb-3">
                 <label for="endereco" class="form-label">Area</label>
-                <input class="form-control" id="endereco" type="text" placeholder="">
+                <input class="form-control" id="endereco" type="text" name="area" placeholder="">
 
             </div>
 
             <div class="row">
                 <div class="d-grid gap-2 col-3 mx-auto">
-                    <button class="btn btn-light btn-lg btn-block" type="submit">Criar</button>
+                    <button class="btn btn-light btn-lg btn-block" type="submit" name="criar">Criar</button>
                 </div>
                 <div class="d-grid gap-2 col-3 mx-auto">
-                    <button class="btn btn-light btn-lg btn-block" type="submit">Cancelar</button>
+                    <a class="btn btn-light btn-lg btn-block" href="index.php" type="submit">Cancelar</a>
                 </div>
             </div>
         </form>
+        <?php
+        if(isset($_POST["criar"])){
+            $nome=$_POST["nome"];
+            $nome_empresa=$_POST["nome_empresa"];
+            $descricao=$_POST["descricao"];
+            $vagas=$_POST["vagas"];
+            $area=$_POST["area"];
+            
+        }
+
+        ?>
     </div>
     </div>
 </body>

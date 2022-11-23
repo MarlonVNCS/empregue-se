@@ -19,7 +19,7 @@ require_once("menu_principal.php");
 
                 <label>Escolaridade</label>
                 <label class="list-group-item d-flex gap-2">
-                    <input class="form-check-input flex-shrink-0" type="checkbox" value="" checked="">
+                    <input class="form-check-input flex-shrink-0" type="radio" value="">
                     <span><label style="vertical-align: inherit;"><label style="vertical-align: inherit;">
                                 Ensino fundamental
                             </label></label><small class="d-block text-muted"><label
@@ -27,7 +27,7 @@ require_once("menu_principal.php");
                     </span>
                 </label>
                 <label class="list-group-item d-flex gap-2">
-                    <input class="form-check-input flex-shrink-0" type="checkbox" value="">
+                    <input class="form-check-input flex-shrink-0" type="radio" value="">
                     <span><label style="vertical-align: inherit;"><label style="vertical-align: inherit;">
                                 Ensino médio
                             </label></label><small class="d-block text-muted"><label
@@ -35,7 +35,7 @@ require_once("menu_principal.php");
                     </span>
                 </label>
                 <label class="list-group-item d-flex gap-2">
-                    <input class="form-check-input flex-shrink-0" type="checkbox" value="">
+                    <input class="form-check-input flex-shrink-0" type="radio" value="">
                     <span><label style="vertical-align: inherit;"><label style="vertical-align: inherit;">
                                 Ensino superior
                             </label></label><small class="d-block text-muted"><label
@@ -125,6 +125,12 @@ require_once("menu_principal.php");
                         }
                     }
 
+
+                    if(isset($_SESSION['tipo'])){
+                        if($_SESSION['tipo'] == 'empresa'){
+                            echo('<a href="criar_vaga.php" class="btn btn-primary my-2" type="submit">Criar vaga</a>'); 
+                        }
+                    }
 
 
                 ?>
