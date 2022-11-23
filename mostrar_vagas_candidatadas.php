@@ -19,49 +19,47 @@
     }else{echo("Falha na coneção");}
 ?>
 <div class="row">
-    <div class="text-center">
-        <h4>Vaga</h4>
-    </div>
     <form method="POST" class="needs-validation">
-        <div class="mb-3">
-            <label for="nome_vaga" class="form-label">Nome da vaga</label>
-            <input class="form-control" type="text" value="<?php echo($nome);?>" readonly>
-            <!-- não deixa alterar o q esta na caixa de texto readonly-->
-
-        </div>
-        <div class="mb-3">
-            <label for="nome_empresa" class="form-label">Empresa</label>
             <?php
-                        $conn = mysqli_connect("127.0.0.1", "root", "", "empregue_se");
-                        if($conn){
-                            $sql = "SELECT * FROM empresa WHERE id = $empresa";
-                            $Consulta_empresa = mysqli_query($conn,$sql);
-                            if(mysqli_num_rows($Consulta_empresa) == 1){
-                                $empre = mysqli_fetch_array($Consulta_empresa);
-                                $nomeempresa = $empre["nome"];
-                            }
-                        }
-                    ?>
-            <input class="form-control" type="text" value="<?php echo($nomeempresa);?>" readonly>
+                $conn = mysqli_connect("127.0.0.1", "root", "", "empregue_se");
+                if($conn){
+                    $sql = "SELECT * FROM empresa WHERE id = $empresa";
+                    $Consulta_empresa = mysqli_query($conn,$sql);
+                    if(mysqli_num_rows($Consulta_empresa) == 1){
+                        $empre = mysqli_fetch_array($Consulta_empresa);
+                        $nomeempresa = $empre["nome"];
+                    }
+                }
+            ?>
 
-        </div>
+        <div class="col-lg-20">
+
+<div class="dropdown-menu position-static d-grid gap-1 p-2 rounded-3 mx-1 shadow w-220px" style="margin-top: 50px;">
+
+    <h1 class="h1">Informações da vaga</h1>
+
+    
+        <hr class="dropdown-divider">
+        <h1 style= "height: 50px;" class="h3">Nome da Vaga: <?php echo($nome); ?></h1>
+        <hr class="dropdown-divider">
+
+        <h1 style= "height: 50px;" class="h3">Empresa: <?php echo($nomeempresa); ?></h1>
+        <hr class="dropdown-divider">
+
+        <h1 style= "height: 50px;" class="h3">Descrição: <?php echo($descri); ?></h1>
+        <hr class="dropdown-divider">
+
+        <h1 style= "height: 50px;" class="h3">Numero de Vagas Disponíveis: <?php echo($total); ?></h1>
+        <hr class="dropdown-divider">
+
+        <h1 style= "height: 50px;" class="h3">Area: <?php  ?></h1>
+    
 
 
-        <div class="mb-3">
-            <label for="descrição" class="form-label">Descrição</label>
-            <input class="form-control" type="text" value="<?php echo($descri);?>" readonly>
-        </div>
-        <div class="mb-3">
-            <label for="vagas_ofertadas" class="form-label">Vagas ofertadas</label>
-            <input class="form-control" type="number" value="<?php echo($total);?>" readonly>
+</div>
 
-        </div>
+</div>
 
-        <div class="mb-3">
-            <label for="endereco" class="form-label">Area</label>
-            <input class="form-control" type="text" value="Dados da vaga" readonly>
-
-        </div>
 
         <div class="row">
             <div class="d-grid gap-2 col-4 mx-auto">
