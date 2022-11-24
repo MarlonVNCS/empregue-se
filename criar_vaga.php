@@ -20,6 +20,29 @@ require_once("menu_principal.php");?>
     </script>
 
 </head>
+<?php
+    $conn = mysqli_connect("127.0.0.1", "root", "", "empregue_se");
+    if($conn){
+        $sql = "SELECT * FROM empresa WHERE id = $_SESSION[login]";
+        $registro = mysqli_query($conn,$sql);
+        if(mysqli_num_rows($registro) == 1){
+            $registros = mysqli_fetch_array($registro);
+
+            $empresa = $registros['nome'];
+        }
+    }
+
+    if($conn){
+        $sql = "SELECT * FROM cidade ORDER BY nome";
+        $registro = mysqli_query($conn,$sql);
+        if(mysqli_num_rows($registro) > 0){
+            $registros = mysqli_fetch_array($registro);
+            $id = $registros["id"];
+            $cidade_nome = $registros['nome'];
+        }
+    }
+
+?>
 
 <body class="bg-dark text-light">
     <div class="container" style="max-width: 36.5rem;">
@@ -35,7 +58,7 @@ require_once("menu_principal.php");?>
             </div>
             <div class="mb-3">
                 <label for="nome_empresa" class="form-label">Nome da empresa</label>
-                <input class="form-control" id="nome_empresa" name="nome_empresa" type="text" placeholder="">
+                <input class="form-control" id="nome_empresa" name="nome_empresa" type="text" placeholder="" value="<?php echo("$empresa"); ?>">
 
             </div>
 
@@ -45,8 +68,14 @@ require_once("menu_principal.php");?>
                 <textarea class="form-control" id="descrição" name="descricao" rows="4" placeholder=""></textarea>
             </div>
             <div class="mb-3">
-                <label for="vagas_ofertadas" class="form-label">Vagas ofertadas</label>
-                <input class="form-control" id="vagas_ofertadas" name="vagas" type="number" placeholder="" min="1">
+                <label for="vagas_ofertadas" class="form-label">Vagas de vagas ofertadas</label>
+                <input class="form-control" id="vagas_ofertadas" name="vagas" type="number" placeholder="">
+
+            </div>
+
+            <div class="mb-3">
+                <label for="vagas_ofertadas" class="form-label">Cidade</label>
+                <input class="form-control" id="id_cidade" name="cidade" type="text" placeholder="" value="<?php echo("<option value='$id'>$cidade_nome</option>");?>">
 
             </div>
 
@@ -70,9 +99,25 @@ require_once("menu_principal.php");?>
             $nome=$_POST["nome"];
             $nome_empresa=$_POST["nome_empresa"];
             $descricao=$_POST["descricao"];
-            $vagas=$_POST["vagas"];
+            $quantidade=$_POST["vagas"];
             $area=$_POST["area"];
-            
+            $status = 0;
+
+            $empresa = $_POST['nome_empresa'];
+            $cidade = $_POST['cidade'];
+
+            $conn = mysqli_connect("localhost", "root", "", "empregue_se");
+
+            if ($conn){
+                $sql = "INSERT INTO vaga(nome,descricao,quantidade,status, id_empresa,id_cidade) VALUES ('$nome','$descricao', '$quantidade','$status','$_SESSION[login]', '$cidade')";
+                if(mysqli_query($conn, $sql)){
+                    echo ("
+                    <script>
+                    alert('Conta criada com sucesso');
+                    location.href = 'index.php';
+                    </script>");
+                }
+            }    
         }
 
         ?>

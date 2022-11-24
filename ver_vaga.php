@@ -107,7 +107,7 @@
                             echo ("<script>location.href = 'login.php?id=$_SESSION[id_vaga]';</script>");
                         }
                         else{
-                            $vericacao = "SELECT * FROM `candidato_vaga` WHERE id_vaga=$id_vaga AND id_cliente=$_SESSION[login];";
+                            $vericacao = "SELECT * FROM candidato_vaga WHERE id_vaga=$id_vaga AND id_cliente=$_SESSION[login];";
                             $verifica = mysqli_query($conn,$vericacao);
                             if(mysqli_num_rows($verifica) > 0){
                                 echo ("
@@ -118,12 +118,17 @@
                             }
                             $sql = "INSERT INTO candidato_vaga (id_vaga,id_cliente) VALUE ('$id_vaga','$_SESSION[login]')";
                             if(mysqli_query($conn, $sql)){
+                            
+                            }
+                            $sql = "UPDATE vaga SET status = $status + 1";
+                            if(mysqli_query($conn, $sql)){
                                 echo ("
                                 <script>
                                 alert('Você se candidatou a vaga');
                                 location.href = 'index.php';
                                 </script>");
                             }
+
                         }
 
                     }
