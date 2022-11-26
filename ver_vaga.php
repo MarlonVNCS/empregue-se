@@ -10,12 +10,22 @@
             $vaga = mysqli_fetch_array($Consulta_vaga);
             
             $nome = $vaga['nome'];
+            $area = $vaga['area'];
+            $esco = $vaga['escola_min'];
             $descri = $vaga['descricao'];
             $quanti = $vaga['quantidade'];
             $status = $vaga['status'];
             $total = $quanti - $status;
             $empresa = $vaga['id_empresa'];
-            $cidade = $vaga['id_cidade'];
+            $id_cidade = $vaga['id_cidade'];
+
+            $sql = "SELECT * FROM cidade WHERE id = $id_cidade";
+            $registros = mysqli_query($conn, $sql);
+            if (mysqli_num_rows($registros) > 0){
+                $registro = mysqli_fetch_array($registros);
+                $cidade = $registro['nome'];
+            }
+
         }else{header("location: index.php");}
     }else{echo("Falha na coneção");}
 
@@ -72,6 +82,12 @@
 
                     <h1 style= "height: 50px;" class="h3">Empresa: <?php echo($nomeempresa); ?></h1>
                     <hr class="dropdown-divider">
+                    
+                    <h1 style= "height: 50px;" class="h3">Area: <?php echo($area) ?></h1>
+                    <hr class="dropdown-divider">
+
+                    <h1 style= "height: 50px;" class="h3">Escolariedade mínima: <?php echo($esco) ?></h1>
+                    <hr class="dropdown-divider">
 
                     <h1 style= "height: 50px;" class="h3">Descrição: <?php echo($descri); ?></h1>
                     <hr class="dropdown-divider">
@@ -79,7 +95,9 @@
                     <h1 style= "height: 50px;" class="h3">Numero de Vagas Disponíveis: <?php echo($total); ?></h1>
                     <hr class="dropdown-divider">
 
-                    <h1 style= "height: 50px;" class="h3">Area: <?php  ?></h1>
+                    <h1 style= "height: 50px;" class="h3">Cidade: <?php echo($cidade); ?></h1>
+                    <hr class="dropdown-divider">
+
                 
 
 

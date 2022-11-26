@@ -18,30 +18,31 @@ require_once("menu_principal.php");
                 </li>
 
                 <label>Escolaridade</label>
-                <label class="list-group-item d-flex gap-2">
-                    <input class="form-check-input flex-shrink-0" type="radio" value="">
-                    <span><label style="vertical-align: inherit;"><label style="vertical-align: inherit;">
-                                Ensino fundamental
-                            </label></label><small class="d-block text-muted"><label
-                                style="vertical-align: inherit;"></label></small>
-                    </span>
-                </label>
-                <label class="list-group-item d-flex gap-2">
-                    <input class="form-check-input flex-shrink-0" type="radio" value="">
-                    <span><label style="vertical-align: inherit;"><label style="vertical-align: inherit;">
-                                Ensino médio
-                            </label></label><small class="d-block text-muted"><label
-                                style="vertical-align: inherit;"></label></small>
-                    </span>
-                </label>
-                <label class="list-group-item d-flex gap-2">
-                    <input class="form-check-input flex-shrink-0" type="radio" value="">
-                    <span><label style="vertical-align: inherit;"><label style="vertical-align: inherit;">
-                                Ensino superior
-                            </label></label><small class="d-block text-muted"><label
-                                style="vertical-align: inherit;"></label></small>
-                    </span>
-                </label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="esco" value="Sem escolaridade" id="radioEscoSem">
+                    <label class="form-check-label" for="radioEscoSem">
+                        Sem escolaridade
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="esco" value="Ensino fundamental"
+                        id="radioEscoFund">
+                    <label class="form-check-label" for="radioEscoFund">
+                        Ensino fundamental
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="esco" value="Ensino medio" id="radioEscoMed">
+                    <label class="form-check-label" for="radioEscoMed">
+                        Ensino médio
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="esco" value="Ensino superior" id="radioEscoSup">
+                    <label class="form-check-label" for="radioEscoSup">
+                        Ensino superior
+                    </label>
+                </div>
 
                 <li>
                     <hr class="dropdown-divider">
@@ -49,28 +50,39 @@ require_once("menu_principal.php");
 
                 <label>Cidade</label>
                 <?php  
-                            // abre a conexao com o banco de dados
-                            $conn = mysqli_connect("localhost", "root", "", "empregue_se");
 
-                            if ($conn){
-                            $sql = "SELECT * FROM cidade ORDER BY nome ASC";
-                            $registros = mysqli_query($conn, $sql);
+                    $id_cidades = [];
 
-                                if(mysqli_num_rows($registros) >0 ){
+                    // abre a conexao com o banco de dados
+                    $conn = mysqli_connect("localhost", "root", "", "empregue_se");
+
+                    if ($conn){
+
+                        $sql = "SELECT * FROM vaga ORDER BY nome ASC";
+                        $resultado = mysqli_query($conn, $sql);
+                        
+                        while ($vaga =  mysqli_fetch_array($resultado)) {
+                            array_push($id_cidades, $vaga["id_cidade"]);
+                        }
+
+                        $sql = "SELECT * FROM cidade WHERE id IN(".implode(',',$id_cidades).") ORDER BY nome ASC";
+                        $registros = mysqli_query($conn, $sql);
+
+                            if(mysqli_num_rows($registros) >0 ){
+                                
+
+                                while ($registro =  mysqli_fetch_array($registros)) {
+                                    echo("
+                                    <label class='list-group-item d-flex gap-2'>
+                                    <input class='form-check-input flex-shrink-0' type='checkbox' value='$registro[id]' name ='cidade' id='$registro[nome]'>
+                                    <label for='$registro[nome]'>$registro[nome]</label>
+                                    </label>
+                                    ");
                                     
-
-                                    while ($registro =  mysqli_fetch_array($registros)) {
-                                        echo("
-                                        <label class='list-group-item d-flex gap-2'>
-                                        <input class='form-check-input flex-shrink-0' type='checkbox' value='' name ='box'>
-                                        <option value='$registro[id]'>$registro[nome]</option>
-                                        </label>
-                                        ");
-                                        
-                                    }
                                 }
                             }
-                        ?>
+                    }
+                ?>
 
 
                 </label>
@@ -92,7 +104,8 @@ require_once("menu_principal.php");
             </div>
 
             <div class="dropdown-menu position-static d-grid gap-1 p-2 rounded-3 mx-0 shadow w-220px">
-                <?php 
+                <?php
+                     
                     $conn = mysqli_connect("127.0.0.1", "root", "", "empregue_se"); // abre a conexão com o banco de dados
                         
                     if ($conn == false){
@@ -115,6 +128,7 @@ require_once("menu_principal.php");
                             $resultado = mysqli_query($conn, $sql);
                         }
                         while ($vaga =  mysqli_fetch_array($resultado)) {
+                            array_push($id_cidades, $vaga["id_cidade"]);
 
                             $nome = $vaga["nome"];
                             $quantidade = $vaga["quantidade"];

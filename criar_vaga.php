@@ -58,30 +58,51 @@ require_once("menu_principal.php");?>
             </div>
             <div class="mb-3">
                 <label for="nome_empresa" class="form-label">Nome da empresa</label>
-                <input class="form-control" id="nome_empresa" name="nome_empresa" type="text" placeholder="" value="<?php echo("$empresa"); ?>">
-
+                <input class="form-control" id="nome_empresa" name="nome_empresa" type="text" placeholder=""
+                    value="<?php echo("$empresa"); ?>">
             </div>
 
 
             <div class="mb-3">
-                <label for="descrição" class="form-label">Descrição</label>
-                <textarea class="form-control" id="descrição" name="descricao" rows="4" placeholder=""></textarea>
+                <label for="area" class="form-label">Área</label>
+                <input type="text" name="area" class="form-control" id="area">
+            </div>
+
+            <div class="mb-3">
+                <label for="esco" class="form-label">Escolaridade mínima</label>
+                <select name="esco" class="form-select" aria-label="Default select example">
+                    <option value="Sem escolariedade">Sem escolariedade</option>
+                    <option value="Ensino fundamental">Ensino fundamental</option>
+                    <option value="Ensino medio">Ensino médio</option>
+                    <option value="Ensino superior">Ensino superior</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="descricao" class="form-label">Descrição</label>
+                <textarea class="form-control" id="descricao" name="descricao" rows="4" placeholder=""></textarea>
             </div>
             <div class="mb-3">
-                <label for="vagas_ofertadas" class="form-label">Vagas de vagas ofertadas</label>
+                <label for="vagas_ofertadas" class="form-label">Quantidade de vagas ofertadas</label>
                 <input class="form-control" id="vagas_ofertadas" name="vagas" type="number" placeholder="">
 
             </div>
 
             <div class="mb-3">
                 <label for="vagas_ofertadas" class="form-label">Cidade</label>
-                <input class="form-control" id="id_cidade" name="cidade" type="text" placeholder="" value="<?php echo("<option value='$id'>$cidade_nome</option>");?>">
+                <select name="cidade" id="cidade" class="form-control">
+                    <?php
+						$sql = "SELECT * FROM cidade ORDER BY nome ASC";
 
-            </div>
+						$registros = mysqli_query($conn, $sql);
 
-            <div class="mb-3">
-                <label for="endereco" class="form-label">Area</label>
-                <input class="form-control" id="endereco" type="text" name="area" placeholder="">
+						if (mysqli_num_rows($registros) > 0){
+							while ($registro = mysqli_fetch_array($registros)){
+								echo("<option value='$registro[id]'>$registro[nome]</option>");
+							}
+						}
+					?>
+                </select>
 
             </div>
 
@@ -101,6 +122,7 @@ require_once("menu_principal.php");?>
             $descricao=$_POST["descricao"];
             $quantidade=$_POST["vagas"];
             $area=$_POST["area"];
+            $esco=$_POST["esco"];
             $status = 0;
 
             $empresa = $_POST['nome_empresa'];
@@ -109,11 +131,11 @@ require_once("menu_principal.php");?>
             $conn = mysqli_connect("localhost", "root", "", "empregue_se");
 
             if ($conn){
-                $sql = "INSERT INTO vaga(nome,descricao,quantidade,status, id_empresa,id_cidade) VALUES ('$nome','$descricao', '$quantidade','$status','$_SESSION[login]', '$cidade')";
+                $sql = "INSERT INTO vaga(nome,area,escola_min,descricao,quantidade,status, id_empresa,id_cidade) VALUES ('$nome','$area','$esco','$descricao', '$quantidade','$status','$_SESSION[login]', '$cidade')";
                 if(mysqli_query($conn, $sql)){
                     echo ("
                     <script>
-                    alert('Conta criada com sucesso');
+                    alert('Vaga criada com sucesso');
                     location.href = 'index.php';
                     </script>");
                 }
