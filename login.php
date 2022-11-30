@@ -1,25 +1,34 @@
 <?php require_once("menu_login.php")?>
+<link rel="stylesheet" href="style.css">
 <div class="row">
-    <div class="text-center">
-        <h4>Fazer login</h4>
-    </div>
-    <form method="POST" class="needs-validation">
-        <div class="mb-3">
-            <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" placeholder="email@exemplo.com" name="email">
-        </div>
-        <div class="mb-3">
-            <label for="senha">Senha</label>
-            <input type="password" class="form-control" id="senha" name="senha">
-            <a class="text-light text-decoration-none" href="">Esqueceu sua senha?</a>
-        </div>
-        <div class="d-grid gap-2 col-3 mx-auto">
-            <button class="btn btn-light btn-lg btn-block" type="submit" name="enviar" value="Enviar">Acessar</button>
+    <form method="POST">
+        <div class="box">
+            <div class="form">
+                <h2>Login</h2>
+                <div class="inputBox">
+                    <input type="text" required="required" id="email" name="email">
+                    <span>Usuario</span>
+                    <i></i>
+                </div>
+                <div class="inputBox">
+                    <input type="password" required="required" id="senha" name="senha">
+                    <span>Senha</span>
+                    <i></i>
+                </div>
+                <div class="links">
+                    <a href="#">Esqueceu a senha</a>
+                </div>
+                <input type="submit" name="enviar" value="Enviar">
+                <div class="links">
+                    <a id="possui" href="#">Criar conta</a>
+                        <div id="contas"></div>
+                </div>
+            </div>
         </div>
     </form>
 </div>
-<div id="php" class="text-danger">
-    <?php
+    <div id="php" class="text-danger">
+        <?php
             session_start();
                 if(isset($_POST['enviar']) == true){
                     if(empty($_POST['email'])){
@@ -33,7 +42,7 @@
                     $senha = $_POST['senha'];
                     $email_valido = false;
 
-                    $conn = mysqli_connect("127.0.0.1","root","","empregue_se");
+                    $conn = mysqli_connect("localhost","root","","empregue_se");
 
                     if($conn){
                         $sql = "SELECT id, email, senha FROM empresa";
@@ -99,16 +108,6 @@
                     
                 }}}
                 ?>
-</div>
-
-<div class="text-warning">
-    <!-- Essa classe só ta para destacar o texto enquanto n arrumamos o botão-->
-    <button id="possui" class="text-warning btn" type="button">Não possui conta?</button> <br>
-    <div id="contas"></div>
-</div>
-</div>
-
-
+    </div>
 </body>
-
 </html>
