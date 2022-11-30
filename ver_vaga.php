@@ -71,7 +71,7 @@
                     ?>
     <div class="col-lg-20">
 
-            <div class="dropdown-menu position-static d-grid gap-1 p-2 rounded-3 mx-1 shadow w-220px">
+            <div class="dropdown-menu position-static d-grid gap-1 p-2 rounded-3 mx-1 shadow w-220px" style="margin-top: 50px;">
 
                 <h1 class="h1">Informações da vaga</h1>
 
@@ -105,13 +105,13 @@
 
         </div>
 
-    <div class="row">
+    <div class="row" style="margin-top: 20px;">
 
         <div class="d-grid gap-2 col-3 mx-auto">
             <button class="btn btn-light btn-lg btn-block" type="submit" name="candi"><?php edit_vaga($tipo_usuario) ?></button>
         </div>
         <div class="d-grid gap-2 col-3 mx-auto">
-            <a href="index.php" class="btn btn-light btn-lg btn-block" type="submit">Cancelar</a>
+            <a href="index.php" class="btn btn-light btn-lg btn-block" type="submit">Voltar</a>
         </div>
     </div>
     </form>

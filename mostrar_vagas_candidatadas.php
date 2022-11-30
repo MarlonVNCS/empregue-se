@@ -62,7 +62,7 @@
 
 
         <div class="row">
-            <div class="d-grid gap-2 col-4 mx-auto">
+            <div class="d-grid gap-2 col-4 mx-auto" style="margin-top: 20px;">
                 <a href="vagas_candidatadas.php" class="btn btn-light btn-lg btn-block" type="submit">Voltar</a>
             </div>
         </div>
