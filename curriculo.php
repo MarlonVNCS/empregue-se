@@ -119,13 +119,13 @@ function editar(){
                         }else{
                             unset($_SESSION["editar"]);
 
-                            $nome=$_POST['nome'];
-                            $nasc=$_POST['nasc'];
-                            $tel=$_POST['tel'];
-                            $area=$_POST['area'];
-                            $expe=$_POST['expe'];
-                            $sexo=$_POST['sexo'];
-                            $end=$_POST['end'];
+                            $nome=mysqli_real_escape_string($conn, $_POST['nome']);
+                            $nasc=mysqli_real_escape_string($conn, $_POST['nasc']);
+                            $tel=mysqli_real_escape_string($conn, $_POST['tel']);
+                            $area=mysqli_real_escape_string($conn, $_POST['area']);
+                            $expe=mysqli_real_escape_string($conn, $_POST['expe']);
+                            $sexo=mysqli_real_escape_string($conn, $_POST['sexo']);
+                            $end=mysqli_real_escape_string($conn, $_POST['end']);
                             if($conn){
                                     $sql = "UPDATE cliente SET nome = '$nome', nascimento = '$nasc', telefone='$tel', areaDeAtuacao = '$area', experiencia = '$expe', sexo = '$sexo', endereco = '$end' WHERE id = '$id_cli'";
                                 

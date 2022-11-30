@@ -76,8 +76,8 @@ function editar(){
                         }else{
                             unset($_SESSION["editar"]);
 
-                            $email=$_POST['email'];
-                            $senha=$_POST['senha'];
+                            $email= mysqli_real_escape_string($conn, $_POST['email']);
+                            $senha= mysqli_real_escape_string($conn, $_POST['senha']);
                             if($conn){
                                     $sql = "UPDATE $tipo SET email='$email', senha = '$senha' WHERE id = '$id'";
                                 

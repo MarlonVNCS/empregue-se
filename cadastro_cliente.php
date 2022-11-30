@@ -69,14 +69,14 @@
 </div>
 <?php
     if(isset($_POST["cria"])){
-            $nome = $_POST["nome"];
-            $nasc = $_POST["nascimento"];
-            $telefone = $_POST["telefone"];
-            $cpf = $_POST["cpf"];
-            $email = $_POST["email"];
-            $senha = $_POST["senha"];
-            $id_formacao =$_POST["formacao"];
-            $sexo=$_POST["sexo"];
+            $nome = mysqli_real_escape_string($conn, $_POST["nome"]);
+            $nasc =mysqli_real_escape_string($conn,  $_POST["nascimento"]);
+            $telefone = mysqli_real_escape_string($conn, $_POST["telefone"]);
+            $cpf =mysqli_real_escape_string($conn,  $_POST["cpf"]);
+            $email = mysqli_real_escape_string($conn, $_POST["email"]);
+            $senha =mysqli_real_escape_string($conn,  $_POST["senha"]);
+            $id_formacao =mysqli_real_escape_string($conn, $_POST["formacao"]);
+            $sexo=mysqli_real_escape_string($conn, $_POST["sexo"]);
             if($conn){
                 $sql = "INSERT INTO cliente(nome,cpf,nascimento, telefone, email,senha,sexo,id_formacaoAcademica) VALUES ('$nome','$cpf', '$nasc','$telefone','$email','$senha','$sexo',$id_formacao)";
                 if(mysqli_query($conn, $sql)){

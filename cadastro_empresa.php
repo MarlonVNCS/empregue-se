@@ -39,11 +39,11 @@
 <?php
     $conn = mysqli_connect("localhost", "root", "", "empregue_se");
         if(isset($_POST["cria"])){
-            $nome = $_POST["nome"];
-            $cnpj = $_POST["cnpj"];
-            $email = $_POST["email"];
-            $senha = $_POST["senha"];
-            $endereco =$_POST["endereco"];
+            $nome =  mysqli_real_escape_string($conn, $_POST["nome"]);
+            $cnpj =  mysqli_real_escape_string($conn, $_POST["cnpj"]);
+            $email =  mysqli_real_escape_string($conn, $_POST["email"]);
+            $senha =  mysqli_real_escape_string($conn, $_POST["senha"]);
+            $endereco = mysqli_real_escape_string($conn, $_POST["endereco"]);
             if($conn){
                 $sql = "INSERT INTO empresa(nome,cnpj,endereco,email,senha) VALUES ('$nome','$cnpj', '$endereco','$email','$senha')";
                 if (mysqli_query($conn, $sql)){

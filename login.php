@@ -38,11 +38,13 @@
                         echo("Por favor, preencha a senha.");
                     }else{
 
-                    $email = $_POST['email'];
-                    $senha = $_POST['senha'];
+                    $conn = mysqli_connect("localhost","root","","empregue_se");
+
+                    $email =mysqli_real_escape_string($conn,  $_POST['email']);
+                    $senha =mysqli_real_escape_string($conn,  $_POST['senha']);
                     $email_valido = false;
 
-                    $conn = mysqli_connect("localhost","root","","empregue_se");
+                    
 
                     if($conn){
                         $sql = "SELECT id, email, senha FROM empresa";

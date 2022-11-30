@@ -117,18 +117,20 @@ require_once("menu_principal.php");?>
         </form>
         <?php
         if(isset($_POST["criar"])){
-            $nome=$_POST["nome"];
-            $nome_empresa=$_POST["nome_empresa"];
-            $descricao=$_POST["descricao"];
-            $quantidade=$_POST["vagas"];
-            $area=$_POST["area"];
-            $esco=$_POST["esco"];
+            $conn = mysqli_connect("localhost", "root", "", "empregue_se");
+
+            $nome= mysqli_real_escape_string($conn, $_POST["nome"]);
+            $nome_empresa= mysqli_real_escape_string($conn, $_POST["nome_empresa"]);
+            $descricao= mysqli_real_escape_string($conn, $_POST["descricao"]);
+            $quantidade= mysqli_real_escape_string($conn, $_POST["vagas"]);
+            $area= mysqli_real_escape_string($conn, $_POST["area"]);
+            $esco= mysqli_real_escape_string($conn, $_POST["esco"]);
             $status = 0;
 
-            $empresa = $_POST['nome_empresa'];
-            $cidade = $_POST['cidade'];
+            $empresa =mysqli_real_escape_string($conn,  $_POST['nome_empresa']);
+            $cidade = mysqli_real_escape_string($conn, $_POST['cidade']);
 
-            $conn = mysqli_connect("localhost", "root", "", "empregue_se");
+           
 
             if ($conn){
                 $sql = "INSERT INTO vaga(nome,area,escola_min,descricao,quantidade,status, id_empresa,id_cidade) VALUES ('$nome','$area','$esco','$descricao', '$quantidade','$status','$_SESSION[login]', '$cidade')";
