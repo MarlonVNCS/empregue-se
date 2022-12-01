@@ -18,7 +18,7 @@
                 <div class="links">
                     <a href="#">Esqueceu a senha</a>
                 </div>
-                <input type="submit" name="enviar" value="Enviar">
+                <input type="submit" name="enviar" value="Entrar">
                 <div class="links">
                     <a id="possui" href="#">Criar conta</a>
                         <div id="contas"></div>

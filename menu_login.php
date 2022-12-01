@@ -19,10 +19,9 @@
     <div class="container" style="max-width: 26.5rem;">
         <header class="py-5 text-center">
             <div>
-                <a href="index.php">
-                    <img class="d-block mx-auto mb-4" src="https://bulma.io/images/placeholders/128x128.png" alt=""
-                        width="110" height="110">
+                <a class="text-decoration-none text-light" href="login.php">
+                    
+                        <h2>Empregue-se</h2>
                 </a>
             </div>
-            <h2>Empregue-se</h2>
         </header>

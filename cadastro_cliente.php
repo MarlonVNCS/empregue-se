@@ -62,7 +62,7 @@
     </form>
     <div class="text-danger">
         <!-- Essa classe só ta para destacar o texto enquanto n arrumamos o botão-->
-        <a href="login.php" style="font-size:110%;" class="text-warning text-decoration-none">Voltar</a>
+        <a href="login.php" style="font-size:110%;" class="text-info text-decoration-none">Voltar</a>
         <div id="contas"></div>
     </div>
 </div>
