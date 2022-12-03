@@ -1,7 +1,7 @@
 <?php
     require_once("menu_principal.php");
     $id_vaga = $_GET["id"];
-    $conn = mysqli_connect("127.0.0.1", "root", "", "empregue_se");
+    $conn = mysqli_connect("localhost", "root", "", "empregue_se");
     if($conn){
         $sql = "SELECT * FROM vaga WHERE id = $id_vaga";
         $Consulta_vaga = mysqli_query($conn,$sql);
@@ -18,10 +18,10 @@
         }else{header("location: index.php");}
     }else{echo("Falha na coneção");}
 ?>
-<div class="row">
+<div class="container" style="max-width: 50.0rem;">
     <form method="POST" class="needs-validation">
             <?php
-                $conn = mysqli_connect("127.0.0.1", "root", "", "empregue_se");
+                $conn = mysqli_connect("localhost", "root", "", "empregue_se");
                 if($conn){
                     $sql = "SELECT * FROM empresa WHERE id = $empresa";
                     $Consulta_empresa = mysqli_query($conn,$sql);
@@ -34,32 +34,31 @@
 
         <div class="col-lg-20">
 
-<div class="dropdown-menu position-static d-grid gap-1 p-2 rounded-3 mx-1 shadow w-220px" style="margin-top: 50px;">
+            <div class="dropdown-menu position-static d-grid gap-1 p-2 rounded-3 mx-1 shadow w-220px" style="margin-top: 40px;
+            padding: 100
+            ">
 
-    <h1 class="h1">Informações da vaga</h1>
+                <h1 class="h1">Informações da vaga</h1>
 
-    
-        <hr class="dropdown-divider">
-        <h1 style= "height: 50px;" class="h3">Nome da Vaga: <?php echo($nome); ?></h1>
-        <hr class="dropdown-divider">
+                
+                    <hr class="dropdown-divider">
+                    <h1 style= "height: 50px;" class="h3">Nome da Vaga: <?php echo($nome); ?></h1>
+                    <hr class="dropdown-divider">
 
-        <h1 style= "height: 50px;" class="h3">Empresa: <?php echo($nomeempresa); ?></h1>
-        <hr class="dropdown-divider">
+                    <h1 style= "height: 50px;" class="h3">Empresa: <?php echo($nomeempresa); ?></h1>
+                    <hr class="dropdown-divider">
 
-        <h1 style= "height: 50px;" class="h3">Descrição: <?php echo($descri); ?></h1>
-        <hr class="dropdown-divider">
+                    <h1 style= "height: 50px;" class="h3">Descrição: <?php echo($descri); ?></h1>
+                    <hr class="dropdown-divider">
 
-        <h1 style= "height: 50px;" class="h3">Numero de Vagas Disponíveis: <?php echo($total); ?></h1>
-        <hr class="dropdown-divider">
+                    <h1 style= "height: 50px;" class="h3">Numero de Vagas Disponíveis: <?php echo($total); ?></h1>
+                    <hr class="dropdown-divider">
 
-        <h1 style= "height: 50px;" class="h3">Area: <?php  ?></h1>
-    
+                    <h1 style= "height: 50px;" class="h3">Area: <?php  ?></h1>
 
+            </div>
 
-</div>
-
-</div>
-
+        </div>
 
         <div class="row">
             <div class="d-grid gap-2 col-4 mx-auto" style="margin-top: 20px;">
