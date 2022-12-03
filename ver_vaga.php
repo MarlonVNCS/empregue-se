@@ -138,7 +138,7 @@
                             if(mysqli_query($conn, $sql)){
                             
                             }
-                            $sql = "UPDATE vaga SET status = $status + 1";
+                            $sql = "UPDATE vaga SET status = $status + 1 WHERE id = $id_vaga";
                             if(mysqli_query($conn, $sql)){
                                 echo ("
                                 <script>

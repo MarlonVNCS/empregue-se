@@ -2,11 +2,16 @@
 require_once("menu_principal.php");
 
 
-$id_cli=$_SESSION['login'];
 
 $conn = mysqli_connect("127.0.0.1", "root", "", "empregue_se");
 if($conn){
-    $sql = "SELECT * FROM cliente WHERE id = $id_cli";
+    if($_SESSION['tipo'] == 'cliente'){
+        $id_cli = $_SESSION['login'];
+        $sql = "SELECT * FROM cliente WHERE  id = $id_cli";
+    }else{
+        $id_candidado =$_GET['id'];
+        $sql = "SELECT * FROM cliente WHERE  id = $id_candidado";
+    }
     $Consulta = mysqli_query($conn,$sql);
     if(mysqli_num_rows($Consulta) == 1){
         $curriculo = mysqli_fetch_array($Consulta);
@@ -104,10 +109,15 @@ function editar(){
         </div>
         <?php
                     if(isset($_POST["voltar"])){
-                        if(isset($_SESSION["editar"])){
-                            unset($_SESSION["editar"]);
+                        if($_SESSION['tipo'] == 'cliente'){
+                            if(isset($_SESSION["editar"])){
+                                unset($_SESSION["editar"]);
+                            }
+                            header("location: index.php");
+                        }else{
+                            $id_vaga=$_SESSION['id_vaga'];
+                            header("location: candidatos_vaga.php?id=$id_vaga");
                         }
-                        header("location: index.php");
                     }
 
                     if(isset($_POST["edit"])){
