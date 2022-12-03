@@ -2,7 +2,7 @@
 require_once("menu_principal.php");
 ?>
 
-<div class="container py-5" style="max-width: 50.0rem; margin-left: 30%;">
+<div class="container py-5" style="max-width: 60.0rem; margin-left: 20%;">
     <div class="row">
         <div class="col-lg-9">
 
