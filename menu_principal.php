@@ -83,10 +83,12 @@ if(session_id() == '') {
                                 </li>
                                 ');
                             } else if($_SESSION["tipo"] == "empresa"){
-                                echo('<li><a class="dropdown-item" href="vagas_candidatadas.php">Candidatos as vagas</a>
+                                echo('
                                 </li>
-                                <li><a class="dropdown-item" href="#">Conta</a></li>
+                                <li><a class="dropdown-item" href="conta.php">Conta</a></li>
                                 <li>
+                                <li>
+                                <a class="dropdown-item" href="vagas_candidatadas.php">Candidatos as vagas</a>
                                 <hr class="dropdown-divider">
                                 </li>
                                 <li><a class="dropdown-item" href="logout.php">Sair</a>

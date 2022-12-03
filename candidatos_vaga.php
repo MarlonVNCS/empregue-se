@@ -1,15 +1,14 @@
 <?php
 require_once("menu_principal.php");
-
 ?>
 
-<div class="container py-5">
+<div class="container py-5" style="max-width: 50.0rem; margin-left: 30%;">
     <div class="row">
         <div class="col-lg-9">
 
             <div class="dropdown-menu position-static d-grid gap-1 p-2 rounded-3 mx-0 shadow w-220px">
                 <?php 
-                    $conn = mysqli_connect("127.0.0.1", "root", "", "empregue_se"); // abre a conexão com o banco de dados
+                    $conn = mysqli_connect("localhost", "root", "", "empregue_se"); // abre a conexão com o banco de dados
                         
                     if ($conn == false){
                         die("Houve um erro ao conectar com o banco de dados");
@@ -34,31 +33,23 @@ require_once("menu_principal.php");
                                     $nome = $cliente["nome"];
                                     $sexo = $cliente["sexo"];
 
-
                                     echo("<a href='curriculo.php?id=$id_cliente' class='btn btn-primary my-2'>
                                     Cliente: $nome // Sexo: $sexo</a>");          
                                 
                                 }                                                                                                     
-                         }
-                         if($_SESSION['tipo'] == 'empresa'){
+                        }
+                        if($_SESSION['tipo'] == 'empresa'){
                             echo('<a href="vagas_candidatadas.php" class="btn btn-primary my-2" type="submit">Voltar</a>'); 
                         }
+                        
                     }
-                         
-
-
-
-                ?>
-
-
-
+                ?><!--
+                <div class="row" style="margin-top: 20px;">
+                    <div class="d-grid gap-2 col-3 mx-auto">
+                        <a href="vagas_candidatadas.php" class="btn btn-light btn-lg btn-block" type="submit">Voltar</a>
+                    </div>
+                </div>-->
             </div>
-
         </div>
-
-
-
-
     </div>
-
 </div>

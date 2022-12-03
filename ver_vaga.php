@@ -2,7 +2,7 @@
     require_once("menu_principal.php");
     $id_vaga = $_GET['id'];
     $_SESSION["id_vaga"] = $id_vaga;
-    $conn = mysqli_connect("127.0.0.1", "root", "", "empregue_se");
+    $conn = mysqli_connect("localhost", "root", "", "empregue_se");
     if($conn){
         $sql = "SELECT * FROM vaga WHERE id = $id_vaga";
         $Consulta_vaga = mysqli_query($conn,$sql);
@@ -59,7 +59,7 @@
 <div class="container" style="max-width: 50.0rem;">
     <form method="POST" class="needs-validation">
             <?php
-                        $conn = mysqli_connect("127.0.0.1", "root", "", "empregue_se");
+                        $conn = mysqli_connect("localhost", "root", "", "empregue_se");
                         if($conn){
                             $sql = "SELECT * FROM empresa WHERE id = $empresa";
                             $Consulta_empresa = mysqli_query($conn,$sql);
@@ -96,11 +96,6 @@
                     <hr class="dropdown-divider">
 
                     <h1 style= "height: 50px;" class="h3">Cidade: <?php echo($cidade); ?></h1>
-                    <hr class="dropdown-divider">
-
-                
-
-
             </div>
 
         </div>
@@ -117,8 +112,7 @@
     </form>
     <?php
                 if(isset($_POST["candi"])){
-                  
-                    
+
                     if($tipo_usuario != "empresa"){
                         if(!(isset($_SESSION['login']) && isset($_SESSION['tipo']))){
                             $_SESSION["pag"] = $_SERVER['REQUEST_URI'];

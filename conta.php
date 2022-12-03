@@ -33,33 +33,34 @@ function editar(){
     
 }
 
-
-
 ?>
-<div class="row" style="margin: 2%;">
-    <div class="text-center">
-        <h4>Conta</h4>
-    </div>
-    <form method="POST" class="needs-validation">
-        <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input class="form-control" <?php editar()?> type="text" name='email' value="<?php echo($email);?>">
+
+<div class="row" style="max-width: 30.0rem; margin: auto;">
+    <div class="" style="margin-top: 40px; align-items: center;">
+        <div class="text-center">
+            <h4>Conta</h4>
         </div>
-        <div class="mb-3">
-            <label for="senha" class="form-label">Senha</label>
-            <input class="form-control" <?php editar()?> name="senha" rows="4" value="<?php echo($senha);?>"></input>
-        </div>
+        <form method="POST" class="needs-validation">
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input class="form-control" <?php editar()?> type="text" name='email' value="<?php echo($email);?>">
+            </div>
+            <div class="mb-3">
+                <label for="senha" class="form-label">Senha</label>
+                <input class="form-control" <?php editar()?> name="senha" rows="4" value="<?php echo($senha);?>"></input>
+            </div>
 
 
-        <div class="row">
-            <div class="d-grid gap-2 col-3 mx-auto" style="margin: 15px;">
-                <button class="btn btn-light btn-lg btn-block" type="submit" name="edit">Editar</button>
+            <div class="row">
+                <div class="d-grid gap-2 col-3 mx-auto" style="margin: 17px;">
+                    <button class="btn btn-light btn-lg btn-block" type="submit" name="edit">Editar</button>
+                </div>
+                <div class="d-grid gap-2 col-3 mx-auto" style="margin: 17px;">
+                    <button class="btn btn-light btn-lg btn-block" type="submit" name="voltar">Voltar</button>
+                </div>
             </div>
-            <div class="d-grid gap-2 col-3 mx-auto" style="margin: 15px;">
-                <button class="btn btn-light btn-lg btn-block" type="submit" name="voltar">Voltar</button>
             </div>
-        </div>
-        <?php
+                <?php
                     if(isset($_POST["voltar"])){
                         if(isset($_SESSION["editar"])){
                             unset($_SESSION["editar"]);
@@ -94,8 +95,8 @@ function editar(){
                     
                     mysqli_close($conn);
                 ?>
-    </form>
-</div>
+            </div>
+        </form>
 </div>
 </body>
 
