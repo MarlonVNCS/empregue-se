@@ -59,7 +59,7 @@ require_once("menu_login.php");
                             while ($registro = mysqli_fetch_array($registros) ){
                                 if($registro['email'] == $email){
                                     $email_valido = true;
-                                    if($registro['senha'] == $senha){
+                                    if($registro['senha'] == $cripto_senha){
                                         /*setcookie("login", $registro["id"]);
                                         setcookie("tipo", "empresa");*/
 
@@ -86,7 +86,7 @@ require_once("menu_login.php");
                             while ($registro = mysqli_fetch_array($registros) ){
                                 if($registro['email'] == $email){
                                     $email_valido = true;
-                                    if($registro['senha'] == $senha){
+                                    if($registro['senha'] == $cripto_senha){
                                         /*etcookie("login", $registro["id"]);
                                         setcookie("tipo", "cliente");*/
                                         

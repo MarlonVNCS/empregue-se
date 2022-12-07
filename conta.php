@@ -45,7 +45,7 @@ function editar(){
             </div>
             <div class="mb-3">
                 <label for="senha" class="form-label">Senha</label>
-                <input class="form-control" <?php editar()?> name="senha" rows="4" value="<?php echo($senha);?>"></input>
+                <input class="form-control" <?php editar()?> name="senha" rows="4" value=""></input>
             </div>
 
 
@@ -67,26 +67,33 @@ function editar(){
                     }
 
                     if(isset($_POST["edit"])){
-
+                        
                         //pra editar os campos
                         if(!isset($_SESSION["editar"])){
                             $_SESSION["editar"] = "aa";
                             header("location: conta.php");
                         }else{
                             unset($_SESSION["editar"]);
-
+                            
                             $email= mysqli_real_escape_string($conn, $_POST['email']);
                             $senha= mysqli_real_escape_string($conn, $_POST['senha']);
-                            if($conn){
-                                    $sql = "UPDATE $tipo SET email='$email', senha = '$senha' WHERE id = '$id'";
-                                
-                                    if (mysqli_query($conn, $sql)){
-                                        //echo ("<script>alert('Curriculo criado com sucesso');location.href = 'conta_cliente.php';</script>");
-                                        header("location: conta.php");
-                                    }else{echo("Tudo errado");}
-                                
+                            $salt="DsVg$3";
+                                $junta = $salt.$senha;
+                                $cripto_senha=hash("sha512",$junta);
+                            if(empty($senha) || empty($email)){
+                                echo ("<script>alert('Preencha os campos');location.href = 'conta.php'</script>");
+                            }else{
+                                if($conn){
+                                        $sql = "UPDATE $tipo SET email='$email', senha = '$cripto_senha' WHERE id = '$id'";
+                                    
+                                        if (mysqli_query($conn, $sql)){
+                                            echo ("<script>alert('Conta atualizada com sucesso');location.href = 'conta.php';</script>");
+                                        }else{echo("Tudo errado");}
+                                    
+                                }
+
                             }
-                            header("location: conta.php");
+                            //header("location: conta.php");
                         }
                     }
                     mysqli_close($conn);
