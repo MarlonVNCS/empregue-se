@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 30-Nov-2022 às 14:55
+-- Tempo de geração: 07-Dez-2022 às 22:07
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.1.2
 
@@ -570,7 +570,7 @@ CREATE TABLE `cliente` (
   `telefone` varchar(45) NOT NULL,
   `endereco` varchar(45) NOT NULL,
   `email` varchar(45) NOT NULL,
-  `senha` varchar(45) NOT NULL,
+  `senha` varchar(300) NOT NULL,
   `areaDeAtuacao` varchar(100) NOT NULL,
   `experiencia` varchar(1000) NOT NULL,
   `id_formacaoAcademica` int(11) NOT NULL,
@@ -583,7 +583,8 @@ CREATE TABLE `cliente` (
 
 INSERT INTO `cliente` (`id`, `nome`, `cpf`, `nascimento`, `telefone`, `endereco`, `email`, `senha`, `areaDeAtuacao`, `experiencia`, `id_formacaoAcademica`, `sexo`) VALUES
 (3, 'cliente', '940.746.560-86', '2012-08-01', '(51) 999999999', 'Rolante', 'cliente@teste.com', 'teste123', 'a', 'a', 1, ''),
-(4, 'Sla da Silva', '151.518.181-81', '2022-09-01', '(51) 99999-9999', '', 'sla@gmail.com', '123', '', '', 1, 'm');
+(4, 'Sla da Silva', '151.518.181-81', '2022-09-01', '(51) 99999-9999', '', 'sla@gmail.com', '123', '', '', 1, 'm'),
+(6, 'CJ', '651.681.681-68', '2002-02-02', '(12) 81614-8161', '', 'cj@gmail.com', '159', '', '', 1, 'm');
 
 -- --------------------------------------------------------
 
@@ -597,7 +598,7 @@ CREATE TABLE `empresa` (
   `endereco` varchar(45) NOT NULL,
   `cnpj` varchar(45) NOT NULL,
   `email` varchar(45) NOT NULL,
-  `senha` varchar(45) NOT NULL
+  `senha` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -650,10 +651,10 @@ CREATE TABLE `vaga` (
 --
 
 INSERT INTO `vaga` (`id`, `nome`, `area`, `escola_min`, `descricao`, `quantidade`, `status`, `id_empresa`, `id_cidade`) VALUES
-(1, 'escravo', 'eita', 'Sem escolaridade', 'trabalho bom', 100, 14, 1, 1),
+(1, 'Auxiliar', 'Calçados', 'Sem escolaridade', 'trabalho bom', 100, 14, 1, 1),
 (2, 'servente', 'serviços', 'Ensino fundamental', 'muito dinheiro', 20, 18, 1, 1),
 (5, 'Programador', 'TI', 'Ensino Médio', 'café', 50, 0, 1, 349),
-(8, 'a', 'TI', 'Sem escolariedade', 'aaaa', 33, 0, 1, 2);
+(8, 'Analista', 'TI', 'Ensino Superior', 'aaaa', 33, 0, 1, 2);
 
 --
 -- Índices para tabelas despejadas
@@ -708,7 +709,7 @@ ALTER TABLE `vaga`
 -- AUTO_INCREMENT de tabela `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `empresa`
