@@ -3,11 +3,11 @@ require_once("menu_principal.php");
 
 ?>
 
-<div class="container" style="max-width: 60.0rem; margin-left: 20%;">
+<div class="container" style="max-width: 60.0rem; margin-left: 30%;">
     <div class="row">
         <div class="col-lg-9">
 
-            <div class="dropdown-menu position-static d-grid gap-1 p-2 rounded-3 mx-0 shadow w-220px" style="margin-top: 80px;">
+            <div class="dropdown-menu position-static d-grid gap-1 p-2 rounded-3 mx-0 shadow w-220px bg-dark" style="margin-top: 80px;">
                 <?php 
                     $conn = mysqli_connect("localhost", "root", "", "empregue_se"); // abre a conexão com o banco de dados
                         
@@ -27,7 +27,7 @@ require_once("menu_principal.php");
                                 $quantidade = $vaga["quantidade"];
                                 $status = $vaga["status"];
                                 $disponiveis=$quantidade-$status;
-                                echo("<a href='candidatos_vaga.php?id=$vaga[id]' class='btn btn-primary my-2'>
+                                echo("<a href='candidatos_vaga.php?id=$vaga[id]' style='background: white; color: black;' class='btn my-2'>
                                 Vaga: $nome // Vagas disponiveis: $disponiveis</a>");                                                                          
                             }
 
@@ -41,15 +41,15 @@ require_once("menu_principal.php");
                                 $quantidade = $vaga["quantidade"];
                                 $status = $vaga["status"];
                                 $disponiveis=$quantidade-$status;
-                                echo("<a href='mostrar_vagas_candidatadas.php?id=$id' class='btn btn-primary my-2'>
+                                echo("<a href='mostrar_vagas_candidatadas.php?id=$id' style='background: white; color: black;' class='btn my-2'>
                                 Vaga: $nome // Vagas disponiveis: $disponiveis</a>");       
                                 
                             }
                             
                         }
-                        if($_SESSION['tipo'] == 'empresa'){
+                        
                             echo('<a href="index.php" class="btn btn-primary my-2" type="submit">Voltar</a>'); 
-                        }
+                        
                 }
                 ?><!--
                 <div class="row" style="margin-top: 20px;">

@@ -44,8 +44,13 @@
             $email =  mysqli_real_escape_string($conn, $_POST["email"]);
             $senha =  mysqli_real_escape_string($conn, $_POST["senha"]);
             $endereco = mysqli_real_escape_string($conn, $_POST["endereco"]);
+
+            $salt="DsVg$3";
+                $junta = $salt.$senha;
+                $cripto_senha=hash("sha512",$junta);
+
             if($conn){
-                $sql = "INSERT INTO empresa(nome,cnpj,endereco,email,senha) VALUES ('$nome','$cnpj', '$endereco','$email','$senha')";
+                $sql = "INSERT INTO empresa(nome,cnpj,endereco,email,senha) VALUES ('$nome','$cnpj', '$endereco','$email','$cripto_senha')";
                 if (mysqli_query($conn, $sql)){
                     echo ("
                     <script>

@@ -121,7 +121,7 @@ function checado($radio){
                 </ul>
             </div>
 
-            <div class="dropdown-menu position-static d-grid gap-1 p-2 rounded-3 mx-0 shadow w-220px">
+            <div class="dropdown-menu position-static d-grid gap-1 p-2 rounded-3 mx-0 shadow w-220px bg-dark">
                 <?php
 
                 if(isset($_POST["resetar"])){
@@ -136,12 +136,11 @@ function checado($radio){
                     if(isset($_POST["filtro"])){
                         $_SESSION['filtros'] = "";
                         if(isset($_POST["esco"])){
-                           $_SESSION['filtros'] = $_SESSION['filtros'] . $_POST['esco'];
+                            $_SESSION['filtros'] = $_SESSION['filtros'] . $_POST['esco'];
                         }
                         echo ("<script>location.href = 'index.php';</script>");
                     }
-
-                     
+                    
                     $conn = mysqli_connect("127.0.0.1", "root", "", "empregue_se"); // abre a conexão com o banco de dados
                         
                     if ($conn == false){
@@ -184,7 +183,7 @@ function checado($radio){
                                 $quantidade = $vaga["quantidade"];
                                 $status = $vaga["status"];
                                 $disponiveis=$quantidade-$status;
-                                echo("<a href='ver_vaga.php?id=$vaga[id]' class='btn btn-primary my-2'>
+                                echo("<a href='ver_vaga.php?id=$vaga[id]' style='background: white; color: black;' class='btn my-2'>
                                 Vaga: $nome // Vagas disponiveis: $disponiveis</a>");                                                                          
                             }
                         } else{
@@ -192,29 +191,13 @@ function checado($radio){
                         }
                     }
 
-
                     if(isset($_SESSION['tipo'])){
                         if($_SESSION['tipo'] == 'empresa'){
                             echo('<a href="criar_vaga.php" class="btn btn-primary my-2" type="submit">Criar vaga</a>'); 
                         }
                     }
-
-
                 ?>
-
-
-
             </div>
-
         </div>
-
-
-
-
     </div>
-
-    <div>
-
-    </div>
-
 </div>

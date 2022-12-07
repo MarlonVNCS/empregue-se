@@ -77,8 +77,13 @@
             $senha =mysqli_real_escape_string($conn,  $_POST["senha"]);
             $id_formacao =mysqli_real_escape_string($conn, $_POST["formacao"]);
             $sexo=mysqli_real_escape_string($conn, $_POST["sexo"]);
+
+            $salt="DsVg$3";
+                $junta = $salt.$senha;
+                $cripto_senha=hash("sha512",$junta);
+
             if($conn){
-                $sql = "INSERT INTO cliente(nome,cpf,nascimento, telefone, email,senha,sexo,id_formacaoAcademica) VALUES ('$nome','$cpf', '$nasc','$telefone','$email','$senha','$sexo',$id_formacao)";
+                $sql = "INSERT INTO cliente(nome,cpf,nascimento, telefone, email,senha,sexo,id_formacaoAcademica) VALUES ('$nome','$cpf', '$nasc','$telefone','$email','$$cripto_senha','$sexo',$id_formacao)";
                 if(mysqli_query($conn, $sql)){
                     echo ("
                     <script>

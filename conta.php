@@ -1,8 +1,6 @@
 <?php require_once("validar.php");
 require_once("menu_principal.php");
 
-
-
 if(isset($_SESSION["tipo"])){
     $id=$_SESSION['login'];
     $tipo = $_SESSION["tipo"];
@@ -90,9 +88,7 @@ function editar(){
                             }
                             header("location: conta.php");
                         }
-                    
                     }
-                    
                     mysqli_close($conn);
                 ?>
             </div>

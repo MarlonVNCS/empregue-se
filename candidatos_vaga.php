@@ -2,11 +2,11 @@
 require_once("menu_principal.php");
 ?>
 
-<div class="container py-5" style="max-width: 60.0rem; margin-left: 20%;">
+<div class="container py-5" style="max-width: 60.0rem; margin-left: 30%;">
     <div class="row">
         <div class="col-lg-9">
 
-            <div class="dropdown-menu position-static d-grid gap-1 p-2 rounded-3 mx-0 shadow w-220px">
+            <div class="dropdown-menu position-static d-grid gap-1 p-2 rounded-3 mx-0 shadow w-220px bg-dark">
                 <?php 
                     $conn = mysqli_connect("localhost", "root", "", "empregue_se"); // abre a conexão com o banco de dados
                         
@@ -33,7 +33,7 @@ require_once("menu_principal.php");
                                     $nome = $cliente["nome"];
                                     $sexo = $cliente["sexo"];
 
-                                    echo("<a href='curriculo.php?id=$id_cliente' class='btn btn-primary my-2'>
+                                    echo("<a href='curriculo.php?id=$id_cliente' style='background: white; color: black;' class='btn my-2'>
                                     Cliente: $nome // Sexo: $sexo</a>");          
                                 
                                 }                                                                                                     

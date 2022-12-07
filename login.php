@@ -47,7 +47,9 @@ require_once("menu_login.php");
                     $senha =mysqli_real_escape_string($conn,  $_POST['senha']);
                     $email_valido = false;
 
-                    
+                    $salt="DsVg$3";
+                        $junta = $salt.$senha;
+                        $cripto_senha=hash("sha512",$junta);
 
                     if($conn){
                         $sql = "SELECT id, email, senha FROM empresa";
