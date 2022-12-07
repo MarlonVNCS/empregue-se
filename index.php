@@ -102,7 +102,7 @@ function checado($radio){
                     </li>
 
                     <input type="submit" name="filtro" value="Filtrar" class="btn btn-secondary btn">
-                    <input type="submit" name="resetar" value="Rresetar" class="btn btn-secondary btn">
+                    <input type="submit" name="resetar" value="Resetar" class="btn btn-secondary btn">
                 </form>
             </div>
 
