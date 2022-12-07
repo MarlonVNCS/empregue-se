@@ -21,45 +21,48 @@ function checado($radio){
 
             <div class="dropdown-menu position-static d-grid gap-1 p-2 rounded-3 mx-0 shadow w-220px">
                 <form method="post">
-                <h1 class="h2">Filtros</h1>
+                    <h1 class="h2">Filtros</h1>
 
-                <li>
-                    <hr class="dropdown-divider">
-                </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
 
-                <label>Escolaridade</label>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="esco" value="Sem escolaridade" id="radioEscoSem" <?php checado("Sem escolaridade");?>>
-                    <label class="form-check-label" for="radioEscoSem">
-                        Sem escolaridade
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="esco" value="Ensino fundamental"
-                        id="radioEscoFund" <?php checado("Ensino fundamental");?>>
-                    <label class="form-check-label" for="radioEscoFund">
-                        Ensino fundamental
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="esco" value="Ensino medio" id="radioEscoMed" <?php checado("Ensino medio");?>>
-                    <label class="form-check-label" for="radioEscoMed">
-                        Ensino médio
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="esco" value="Ensino superior" id="radioEscoSup" <?php checado("Ensino superior");?>>
-                    <label class="form-check-label" for="radioEscoSup">
-                        Ensino superior
-                    </label>
-                </div>
+                    <label>Escolaridade</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="esco" value="Sem escolaridade"
+                            id="radioEscoSem" <?php checado("Sem escolaridade");?>>
+                        <label class="form-check-label" for="radioEscoSem">
+                            Sem escolaridade
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="esco" value="Ensino fundamental"
+                            id="radioEscoFund" <?php checado("Ensino fundamental");?>>
+                        <label class="form-check-label" for="radioEscoFund">
+                            Ensino fundamental
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="esco" value="Ensino medio" id="radioEscoMed"
+                            <?php checado("Ensino medio");?>>
+                        <label class="form-check-label" for="radioEscoMed">
+                            Ensino médio
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="esco" value="Ensino superior"
+                            id="radioEscoSup" <?php checado("Ensino superior");?>>
+                        <label class="form-check-label" for="radioEscoSup">
+                            Ensino superior
+                        </label>
+                    </div>
 
-                <li>
-                    <hr class="dropdown-divider">
-                </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
 
-                <label>Cidade</label>
-                <?php  
+                    <label>Cidade</label>
+                    <?php  
 
                     $id_cidades = [];
 
@@ -94,8 +97,13 @@ function checado($radio){
                     }
                 ?>
 
-            <input type="submit" name="filtro" value="Filtrar">
-            </form>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+
+                    <input type="submit" name="filtro" value="Filtrar" class="btn btn-secondary btn">
+                    <input type="submit" name="resetar" value="Rresetar" class="btn btn-secondary btn">
+                </form>
             </div>
 
         </div>
@@ -116,6 +124,11 @@ function checado($radio){
             <div class="dropdown-menu position-static d-grid gap-1 p-2 rounded-3 mx-0 shadow w-220px">
                 <?php
 
+                if(isset($_POST["resetar"])){
+                    $_SESSION['filtros'] = "";
+                    echo ("<script>location.href = 'index.php';</script>");
+                }
+
                 if(!isset($_SESSION['filtros'])){
                     $_SESSION['filtros'] = "";
                 }
@@ -125,7 +138,7 @@ function checado($radio){
                         if(isset($_POST["esco"])){
                            $_SESSION['filtros'] = $_SESSION['filtros'] . $_POST['esco'];
                         }
-                        header("location: index.php");
+                        echo ("<script>location.href = 'index.php';</script>");
                     }
 
                      
@@ -136,13 +149,17 @@ function checado($radio){
                             
                     }
                     else{
-                        if(!empty($_SESSION['filtros'])){
+                        if(!empty($_SESSION['filtros']) || $_SESSION['filtros'] != ""){
                             $sql = "SELECT * FROM vaga WHERE escola_min = " . "'$_SESSION[filtros]'" . " ORDER BY nome ASC";
                             //$sqlEmpresa = "SELECT * FROM vaga WHERE id_empresa= $_SESSION[login] AND escola_min = " . $_SESSION['filtros'];
+                        } else{
+                            $sql = "SELECT * FROM vaga ORDER BY nome ASC";
                         }
                         if(isset($_SESSION['tipo'])){
-                            if(!empty($_SESSION['filtros'])){
+                            if(!empty($_SESSION['filtros']) || $_SESSION['filtros'] != ""){
                                 $sqlEmpresa = "SELECT * FROM vaga WHERE id_empresa= $_SESSION[login] AND escola_min = " . "'$_SESSION[filtros]'";
+                            } else{
+                                $sqlEmpresa = "SELECT * FROM vaga WHERE id_empresa= $_SESSION[login]";
                             }
                             if($_SESSION['tipo'] == 'empresa'){    
                                 $id_empresa=$_SESSION["login"];
@@ -195,7 +212,7 @@ function checado($radio){
 
 
     </div>
-    
+
     <div>
 
     </div>
