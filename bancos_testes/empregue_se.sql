@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 07-Dez-2022 às 22:07
--- Versão do servidor: 10.4.22-MariaDB
--- versão do PHP: 8.1.2
+-- Tempo de geração: 07-Dez-2022 às 22:32
+-- Versão do servidor: 10.4.24-MariaDB
+-- versão do PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -582,9 +582,9 @@ CREATE TABLE `cliente` (
 --
 
 INSERT INTO `cliente` (`id`, `nome`, `cpf`, `nascimento`, `telefone`, `endereco`, `email`, `senha`, `areaDeAtuacao`, `experiencia`, `id_formacaoAcademica`, `sexo`) VALUES
-(3, 'cliente', '940.746.560-86', '2012-08-01', '(51) 999999999', 'Rolante', 'cliente@teste.com', 'teste123', 'a', 'a', 1, ''),
-(4, 'Sla da Silva', '151.518.181-81', '2022-09-01', '(51) 99999-9999', '', 'sla@gmail.com', '123', '', '', 1, 'm'),
-(6, 'CJ', '651.681.681-68', '2002-02-02', '(12) 81614-8161', '', 'cj@gmail.com', '159', '', '', 1, 'm');
+(3, 'cliente', '940.746.560-86', '2012-08-01', '(51) 999999999', 'Rolante', 'cliente@teste.com', '52e9cdc634b8d3a4db60151b5e068a7f08c0442e865a7662faff9a9d42a069f470cae6d52df46f5e009d3c7968105ad47d8c0895d1b572c399d10a4f4845125b', 'a', 'a', 1, ''),
+(4, 'Sla da Silva', '151.518.181-81', '2022-09-01', '(51) 99999-9999', '', 'sla@gmail.com', '26d73d12db3069d2ce13c0605a0ea1578befa1ae861e96780dc78a98f6a0b02235b62555bbeee1fc261d8125ed2bd5854793ac4220c7c87824693a35f04080d8', '', '', 1, 'm'),
+(6, 'CJ', '651.681.681-68', '2002-02-02', '(12) 81614-8161', '', 'cj@gmail.com', '26d73d12db3069d2ce13c0605a0ea1578befa1ae861e96780dc78a98f6a0b02235b62555bbeee1fc261d8125ed2bd5854793ac4220c7c87824693a35f04080d8', '', '', 1, 'm');
 
 -- --------------------------------------------------------
 
@@ -606,9 +606,9 @@ CREATE TABLE `empresa` (
 --
 
 INSERT INTO `empresa` (`id`, `nome`, `endereco`, `cnpj`, `email`, `senha`) VALUES
-(1, 'Admin', 'Rolante', '97.049.381/0001-35', 'admin_test001@adm.com', 'senha123'),
-(2, 'AdminDois', 'Rolante', '97.049.381/0001-35', 'admin_test2@adm.com', '12345'),
-(4, 'Ambev', '', '99.999.999/9999-99', 'ambev@gmail.com', '123');
+(1, 'Admin', 'Rolante', '97.049.381/0001-35', 'admin_test001@adm.com', '23841b5c04437ab1164eeb79485845ef145db45fcf8ca4723aea1430f643d0387afbf5e7cc718f54f534fd4190c20335ea45a58214f759e05118cfd43523bea4'),
+(2, 'AdminDois', 'Rolante', '97.049.381/0001-35', 'admin_test2@adm.com', '92f5a11ec45ea0a8a1bd615bd8d56cb8811426a8db64bc58738d00f473571225046a2360f00a52e97521ce381b1e382398b6537bc2d9a59a5a5bb83c92312c28'),
+(4, 'Ambev', '', '99.999.999/9999-99', 'ambev@gmail.com', '26d73d12db3069d2ce13c0605a0ea1578befa1ae861e96780dc78a98f6a0b02235b62555bbeee1fc261d8125ed2bd5854793ac4220c7c87824693a35f04080d8');
 
 -- --------------------------------------------------------
 
