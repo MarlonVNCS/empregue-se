@@ -1,5 +1,15 @@
 <?php
 require_once("menu_principal.php");
+ob_start();
+
+function checado($radio){
+    if(isset($_SESSION['filtros'])){
+        echo $_SESSION['filtros'];
+        if ($_SESSION['filtros'] == $radio){
+            echo(" checked");
+        }
+    }
+}
 
 ?>
 
@@ -10,7 +20,7 @@ require_once("menu_principal.php");
 
 
             <div class="dropdown-menu position-static d-grid gap-1 p-2 rounded-3 mx-0 shadow w-220px">
-
+                <form method="post">
                 <h1 class="h2">Filtros</h1>
 
                 <li>
@@ -19,26 +29,26 @@ require_once("menu_principal.php");
 
                 <label>Escolaridade</label>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="esco" value="Sem escolaridade" id="radioEscoSem">
+                    <input class="form-check-input" type="radio" name="esco" value="Sem escolaridade" id="radioEscoSem" <?php checado("Sem escolaridade");?>>
                     <label class="form-check-label" for="radioEscoSem">
                         Sem escolaridade
                     </label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="esco" value="Ensino fundamental"
-                        id="radioEscoFund">
+                        id="radioEscoFund" <?php checado("Ensino fundamental");?>>
                     <label class="form-check-label" for="radioEscoFund">
                         Ensino fundamental
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="esco" value="Ensino medio" id="radioEscoMed">
+                    <input class="form-check-input" type="radio" name="esco" value="Ensino medio" id="radioEscoMed" <?php checado("Ensino medio");?>>
                     <label class="form-check-label" for="radioEscoMed">
                         Ensino médio
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="esco" value="Ensino superior" id="radioEscoSup">
+                    <input class="form-check-input" type="radio" name="esco" value="Ensino superior" id="radioEscoSup" <?php checado("Ensino superior");?>>
                     <label class="form-check-label" for="radioEscoSup">
                         Ensino superior
                     </label>
@@ -84,8 +94,8 @@ require_once("menu_principal.php");
                     }
                 ?>
 
-
-                </label>
+            <input type="submit" name="filtro" value="Filtrar">
+            </form>
             </div>
 
         </div>
@@ -105,6 +115,19 @@ require_once("menu_principal.php");
 
             <div class="dropdown-menu position-static d-grid gap-1 p-2 rounded-3 mx-0 shadow w-220px">
                 <?php
+
+                if(!isset($_SESSION['filtros'])){
+                    $_SESSION['filtros'] = "";
+                }
+
+                    if(isset($_POST["filtro"])){
+                        $_SESSION['filtros'] = "";
+                        if(isset($_POST["esco"])){
+                           $_SESSION['filtros'] = $_SESSION['filtros'] . $_POST['esco'];
+                        }
+                        header("location: index.php");
+                    }
+
                      
                     $conn = mysqli_connect("127.0.0.1", "root", "", "empregue_se"); // abre a conexão com o banco de dados
                         
@@ -113,29 +136,42 @@ require_once("menu_principal.php");
                             
                     }
                     else{
+                        if(!empty($_SESSION['filtros'])){
+                            $sql = "SELECT * FROM vaga WHERE escola_min = " . "'$_SESSION[filtros]'" . " ORDER BY nome ASC";
+                            //$sqlEmpresa = "SELECT * FROM vaga WHERE id_empresa= $_SESSION[login] AND escola_min = " . $_SESSION['filtros'];
+                        }
                         if(isset($_SESSION['tipo'])){
+                            if(!empty($_SESSION['filtros'])){
+                                $sqlEmpresa = "SELECT * FROM vaga WHERE id_empresa= $_SESSION[login] AND escola_min = " . "'$_SESSION[filtros]'";
+                            }
                             if($_SESSION['tipo'] == 'empresa'){    
                                 $id_empresa=$_SESSION["login"];
-                                $sql = "SELECT * FROM vaga WHERE id_empresa=$id_empresa";
-                                $resultado = mysqli_query($conn, $sql);
+                                //$sql = "SELECT * FROM vaga WHERE id_empresa=$id_empresa" . $_SESSION['filtros'];
+                                $resultado = mysqli_query($conn, $sqlEmpresa);
                             }else{
-                                $sql = "SELECT * FROM vaga ORDER BY nome ASC";
+                                //$sql = "SELECT * FROM vaga WHERE 1=1 " . $_SESSION['filtros'] . " ORDER BY nome ASC";
                                 $resultado = mysqli_query($conn, $sql);
                             }
                                     
                         }else{
-                            $sql = "SELECT * FROM vaga ORDER BY nome ASC";
+                            //$sql = "SELECT * FROM vaga WHERE 1=1 " . $_SESSION['filtros'] . " ORDER BY nome ASC";
                             $resultado = mysqli_query($conn, $sql);
                         }
-                        while ($vaga =  mysqli_fetch_array($resultado)) {
-                            array_push($id_cidades, $vaga["id_cidade"]);
 
-                            $nome = $vaga["nome"];
-                            $quantidade = $vaga["quantidade"];
-                            $status = $vaga["status"];
-                            $disponiveis=$quantidade-$status;
-                            echo("<a href='ver_vaga.php?id=$vaga[id]' class='btn btn-primary my-2'>
-                            Vaga: $nome // Vagas disponiveis: $disponiveis</a>");                                                                          
+                        if(mysqli_num_rows($resultado) > 0){
+
+                            while ($vaga =  mysqli_fetch_array($resultado)) {
+                                array_push($id_cidades, $vaga["id_cidade"]);
+    
+                                $nome = $vaga["nome"];
+                                $quantidade = $vaga["quantidade"];
+                                $status = $vaga["status"];
+                                $disponiveis=$quantidade-$status;
+                                echo("<a href='ver_vaga.php?id=$vaga[id]' class='btn btn-primary my-2'>
+                                Vaga: $nome // Vagas disponiveis: $disponiveis</a>");                                                                          
+                            }
+                        } else{
+                            echo("Nenhum registro encontrado");
                         }
                     }
 
@@ -159,6 +195,7 @@ require_once("menu_principal.php");
 
 
     </div>
+    
     <div>
 
     </div>
