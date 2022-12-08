@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 08-Dez-2022 às 02:06
+-- Tempo de geração: 08-Dez-2022 às 02:38
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.1.2
 
@@ -86,7 +86,7 @@ INSERT INTO `cidade` (`id`, `nome`, `uf`, `cep`) VALUES
 (26, 'Arroio Grande', 'RS', ''),
 (27, 'Arvorezinha', 'RS', ''),
 (28, 'Augusto Pestana', 'RS', ''),
-(29, '?urea', 'RS', ''),
+(29, 'Áurea', 'RS', ''),
 (30, 'Bag?', 'RS', ''),
 (31, 'Balne?rio Pinhal', 'RS', ''),
 (32, 'Bar?o', 'RS', ''),
@@ -608,7 +608,8 @@ CREATE TABLE `empresa` (
 INSERT INTO `empresa` (`id`, `nome`, `endereco`, `cnpj`, `email`, `senha`) VALUES
 (1, 'Admin', 'Rolante', '97.049.381/0001-35', 'admin_test001@adm.com', '23841b5c04437ab1164eeb79485845ef145db45fcf8ca4723aea1430f643d0387afbf5e7cc718f54f534fd4190c20335ea45a58214f759e05118cfd43523bea4'),
 (2, 'AdminDois', 'Rolante', '97.049.381/0001-35', 'admin_test2@adm.com', '92f5a11ec45ea0a8a1bd615bd8d56cb8811426a8db64bc58738d00f473571225046a2360f00a52e97521ce381b1e382398b6537bc2d9a59a5a5bb83c92312c28'),
-(4, 'Ambev', '', '99.999.999/9999-99', 'ambev@gmail.com', '26d73d12db3069d2ce13c0605a0ea1578befa1ae861e96780dc78a98f6a0b02235b62555bbeee1fc261d8125ed2bd5854793ac4220c7c87824693a35f04080d8');
+(4, 'Ambev', '', '99.999.999/9999-99', 'ambev@gmail.com', '26d73d12db3069d2ce13c0605a0ea1578befa1ae861e96780dc78a98f6a0b02235b62555bbeee1fc261d8125ed2bd5854793ac4220c7c87824693a35f04080d8'),
+(5, 'Empresaa', '', '00.000.000/0000-00', 'empresa@gmail.com', '26d73d12db3069d2ce13c0605a0ea1578befa1ae861e96780dc78a98f6a0b02235b62555bbeee1fc261d8125ed2bd5854793ac4220c7c87824693a35f04080d8');
 
 -- --------------------------------------------------------
 
@@ -626,7 +627,10 @@ CREATE TABLE `formacaoacademica` (
 --
 
 INSERT INTO `formacaoacademica` (`id`, `descricao`) VALUES
-(1, 'Fundamental');
+(0, 'Sem escolaridade'),
+(1, 'Ensino fundamental'),
+(2, 'Ensino Médio'),
+(3, 'Ensino Superior');
 
 -- --------------------------------------------------------
 
@@ -715,13 +719,13 @@ ALTER TABLE `cliente`
 -- AUTO_INCREMENT de tabela `empresa`
 --
 ALTER TABLE `empresa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `formacaoacademica`
 --
 ALTER TABLE `formacaoacademica`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `vaga`

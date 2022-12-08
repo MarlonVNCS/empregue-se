@@ -19,7 +19,7 @@
     <div class="container" style="max-width: 26.5rem;">
         <header class="py-5 text-center">
             <div>
-                <a class="text-decoration-none text-light" href="login.php">
+                <a class="text-decoration-none text-light" href="index.php">
                     
                         <h2>Empregue-se</h2>
                 </a>

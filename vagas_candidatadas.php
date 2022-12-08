@@ -1,9 +1,12 @@
 <?php
+require_once("validar.php");
 require_once("menu_principal.php");
 
 ?>
 
-<div class="container" style="max-width: 60.0rem; margin-left: 30%;">
+<body class="bg-dark text-light">
+
+<div class="container" style="max-width: 60.0rem;">
     <div class="row">
         <div class="col-lg-9">
 
@@ -61,3 +64,5 @@ require_once("menu_principal.php");
         </div>
     </div>
 </div>
+
+</body>
