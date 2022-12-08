@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 07-Dez-2022 às 22:32
--- Versão do servidor: 10.4.24-MariaDB
--- versão do PHP: 8.1.6
+-- Tempo de geração: 08-Dez-2022 às 02:06
+-- Versão do servidor: 10.4.22-MariaDB
+-- versão do PHP: 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -58,25 +58,25 @@ CREATE TABLE `cidade` (
 --
 
 INSERT INTO `cidade` (`id`, `nome`, `uf`, `cep`) VALUES
-(1, 'Acegu?', 'RS', ''),
-(2, '?gua Santa', 'RS', ''),
+(1, 'Aceguá', 'RS', ''),
+(2, 'Água Santa', 'RS', ''),
 (3, 'Agudo', 'RS', ''),
 (4, 'Ajuricaba', 'RS', ''),
 (5, 'Alecrim', 'RS', ''),
 (6, 'Alegrete', 'RS', ''),
 (7, 'Alegria', 'RS', ''),
-(8, 'Almirante Tamandar? do Sul', 'RS', ''),
+(8, 'Almirante Tamandaré do Sul', 'RS', ''),
 (9, 'Alpestre', 'RS', ''),
 (10, 'Alto Alegre', 'RS', ''),
 (11, 'Alto Feliz', 'RS', ''),
 (12, 'Alvorada', 'RS', ''),
 (13, 'Amaral Ferrador', 'RS', ''),
 (14, 'Ametista do Sul', 'RS', ''),
-(15, 'Andr? da Rocha', 'RS', ''),
+(15, 'André da Rocha', 'RS', ''),
 (16, 'Anta Gorda', 'RS', ''),
-(17, 'Ant?nio Prado', 'RS', ''),
-(18, 'Arambar?', 'RS', ''),
-(19, 'Araric?', 'RS', ''),
+(17, 'Antônio Prado', 'RS', ''),
+(18, 'Arambaré', 'RS', ''),
+(19, 'Araricá', 'RS', ''),
 (20, 'Aratiba', 'RS', ''),
 (21, 'Arroio do Meio', 'RS', ''),
 (22, 'Arroio do Padre', 'RS', ''),
